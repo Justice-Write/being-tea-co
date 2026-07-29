@@ -1,6 +1,18 @@
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/SiteChrome";
+import { brewImageAlt } from "../content/imageAlt";
 import { brewMethods } from "../content/library";
+import { pageMetadata } from "../lib/site";
+
+export const metadata = pageMetadata({
+  title: "Tea Brewing Methods & Preparation Guides",
+  description:
+    "Step-by-step starting points for Western infusion, gongfu, grandpa style, cold brew, sencha, matcha, masala chai, flash chilling, and leaves in a bowl.",
+  path: "/brew",
+  image: "/images/landing/brew.webp",
+  imageAlt:
+    "Tea brewing vessels and measured leaf arranged for the Being Tea Co. preparation library.",
+});
 
 export default function BrewPage() {
   return (
@@ -30,7 +42,7 @@ export default function BrewPage() {
             <img
               className="method-card-image"
               src={`/images/brew/${method.slug}.webp`}
-              alt=""
+              alt={brewImageAlt[method.slug]}
             />
             <span className="method-number">{String(index + 1).padStart(2, "0")}</span>
             <p>{method.bestFor}</p>

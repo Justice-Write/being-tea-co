@@ -29,6 +29,13 @@ async function htmlFor(pathname) {
   return response.text();
 }
 
+async function textFor(pathname, contentType) {
+  const response = await render(pathname);
+  assert.equal(response.status, 200, pathname);
+  assert.match(response.headers.get("content-type") ?? "", contentType);
+  return response.text();
+}
+
 test("server-renders the finished Being Tea Co. home page", async () => {
   const html = await htmlFor("/");
   assert.match(html, /Being Tea Co\./);
@@ -93,4 +100,101 @@ test("tea, brew, and journal detail pages use their assigned images", async () =
   assert.match(tea, /\/images\/tea\/oolong\.webp/);
   assert.match(brew, /\/images\/brew\/gongfu\.webp/);
   assert.match(journal, /\/images\/journal\/b02\.webp/);
+});
+
+test("search metadata is unique, canonical, and structured", async () => {
+  const [home, about, journal, studio] = await Promise.all([
+    htmlFor("/"),
+    htmlFor("/about"),
+    htmlFor("/journal/finding-the-golden-light"),
+    htmlFor("/studio"),
+  ]);
+
+  assert.match(
+    about,
+    /<title>About Being Tea Co\. \| Being Tea Co\.<\/title>/,
+  );
+  assert.match(
+    about,
+    /<link rel="canonical" href="https:\/\/being-tea-co\.chriscodyak\.chatgpt\.site\/about"/,
+  );
+  assert.match(
+    about,
+    /<meta name="description" content="The story and purpose of Being Tea Co\./,
+  );
+  assert.match(home, /"@type":"Organization"/);
+  assert.match(home, /"@type":"WebSite"/);
+  assert.match(journal, /"@type":"BlogPosting"/);
+  assert.match(journal, /"@type":"BreadcrumbList"/);
+  assert.match(studio, /<meta name="robots" content="noindex, nofollow, noarchive"/);
+});
+
+test("trust pages use five distinct page images", async () => {
+  const pages = await Promise.all(
+    ["about", "contact", "privacy", "terms", "disclosures"].map((path) =>
+      htmlFor(`/${path}`),
+    ),
+  );
+  const images = new Set(
+    pages.flatMap((html) =>
+      [...html.matchAll(/\/images\/pages\/([a-z-]+)\.webp/g)].map(
+        (match) => match[1],
+      ),
+    ),
+  );
+
+  assert.equal(images.size, 5);
+  assert.deepEqual(
+    [...images].sort(),
+    ["about", "contact", "disclosures", "privacy", "terms"],
+  );
+});
+
+test("shop distinguishes researched candidates from active paid links", async () => {
+  const html = await htmlFor("/shop");
+
+  for (const name of [
+    "TeaVivre",
+    "Palais des Thés USA",
+    "Art of Tea",
+    "Bookshop.org",
+    "The Tea Spot",
+    "Teabloom",
+    "Printful Quick Stores",
+    "Spreadshop",
+    "Zazzle Creator Store",
+  ]) {
+    assert.match(html, new RegExp(name.replace(/[.]/g, "\\.")));
+  }
+
+  assert.match(html, /No paid product links are active today/);
+  assert.match(html, /Awin.*?\$5 refundable verification/s);
+  assert.match(html, /Fourthwall.*?on hold/s);
+  assert.doesNotMatch(html, /rel="sponsored"/);
+});
+
+test("sitemap lists every public route and robots excludes the studio", async () => {
+  const [xml, robots] = await Promise.all([
+    textFor("/sitemap.xml", /^application\/xml\b/i),
+    textFor("/robots.txt", /^text\/plain\b/i),
+  ]);
+  const urls = [
+    ...xml.matchAll(
+      /<loc>https:\/\/being-tea-co\.chriscodyak\.chatgpt\.site([^<]*)<\/loc>/g,
+    ),
+  ].map((match) => match[1] || "/");
+
+  assert.equal(urls.length, 41);
+  assert.equal(new Set(urls).size, 41);
+  assert.ok(!urls.includes("/studio"));
+  assert.match(robots, /Disallow: \/studio/);
+  assert.match(
+    robots,
+    /Sitemap: https:\/\/being-tea-co\.chriscodyak\.chatgpt\.site\/sitemap\.xml/,
+  );
+
+  const responses = await Promise.all(urls.map((path) => render(path)));
+  responses.forEach((response, index) => {
+    assert.equal(response.status, 200, urls[index]);
+  });
 });

@@ -1,11 +1,50 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { JsonLd } from "../../components/JsonLd";
 import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
 import { RichText } from "../../components/RichText";
 import { blogs } from "../../content/blogs";
+import {
+  SITE_NAME,
+  SITE_URL,
+  absoluteUrl,
+  breadcrumbJsonLd,
+  pageMetadata,
+} from "../../lib/site";
 
 export function generateStaticParams() {
   return blogs.map((post) => ({ slug: post.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = blogs.find((item) => item.slug === slug);
+  if (!post) return {};
+  const description = post.dek.replace(/\*/g, "");
+  const base = pageMetadata({
+    title: post.title,
+    description,
+    path: `/journal/${post.slug}`,
+    image: `/images/journal/${post.id.toLowerCase()}.webp`,
+    imageAlt: post.altText,
+  });
+
+  return {
+    ...base,
+    openGraph: {
+      ...base.openGraph,
+      type: "article",
+      publishedTime: `${post.date}T12:00:00Z`,
+      modifiedTime: `${post.date}T12:00:00Z`,
+      authors: [SITE_NAME],
+      section: post.category,
+    },
+  };
 }
 
 export default async function JournalPost({
@@ -18,9 +57,44 @@ export default async function JournalPost({
   if (!post) notFound();
   const current = blogs.findIndex((item) => item.slug === slug);
   const next = blogs[(current + 1) % blogs.length];
+  const articleUrl = absoluteUrl(`/journal/${post.slug}`);
+  const articleImage = absoluteUrl(
+    `/images/journal/${post.id.toLowerCase()}.webp`,
+  );
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${articleUrl}#article`,
+    headline: post.title,
+    description: post.dek.replace(/\*/g, ""),
+    datePublished: `${post.date}T12:00:00Z`,
+    dateModified: `${post.date}T12:00:00Z`,
+    image: {
+      "@type": "ImageObject",
+      url: articleImage,
+      caption: post.altText,
+    },
+    author: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    mainEntityOfPage: articleUrl,
+    articleSection: post.category,
+    isAccessibleForFree: true,
+    inLanguage: "en-US",
+  };
+  const breadcrumbs = breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Journal", path: "/journal" },
+    { name: post.title, path: `/journal/${post.slug}` },
+  ]);
 
   return (
     <main>
+      <JsonLd data={articleJsonLd} />
+      <JsonLd data={breadcrumbs} />
       <SiteHeader />
       <article className="journal-post">
         <header>

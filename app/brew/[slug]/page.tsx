@@ -1,10 +1,35 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { JsonLd } from "../../components/JsonLd";
 import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
+import { brewImageAlt } from "../../content/imageAlt";
 import { brewMethods } from "../../content/library";
+import {
+  breadcrumbJsonLd,
+  pageMetadata,
+} from "../../lib/site";
 
 export function generateStaticParams() {
   return brewMethods.map((method) => ({ slug: method.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const method = brewMethods.find((item) => item.slug === slug);
+  if (!method) return {};
+
+  return pageMetadata({
+    title: `${method.name}: Step-by-Step Tea Brewing Guide`,
+    description: `${method.promise} Find the equipment, measured starting point, brewing steps, and adjustments for ${method.bestFor.toLowerCase()}.`,
+    path: `/brew/${method.slug}`,
+    image: `/images/brew/${method.slug}.webp`,
+    imageAlt: brewImageAlt[method.slug],
+  });
 }
 
 export default async function BrewMethodPage({
@@ -15,9 +40,15 @@ export default async function BrewMethodPage({
   const { slug } = await params;
   const method = brewMethods.find((item) => item.slug === slug);
   if (!method) notFound();
+  const breadcrumbs = breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Preparation library", path: "/brew" },
+    { name: method.name, path: `/brew/${method.slug}` },
+  ]);
 
   return (
     <main>
+      <JsonLd data={breadcrumbs} />
       <SiteHeader />
       <article className="method-guide">
         <header

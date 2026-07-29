@@ -1,38 +1,64 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+} from "./lib/site";
 import "./globals.css";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host = requestHeaders.get("host") ?? "localhost:3000";
-  const protocol = requestHeaders.get("x-forwarded-proto") ?? "http";
-  const base = `${protocol}://${host}`;
-  const title = "Being Tea Co. | Tea culture from leaf to golden light";
-  const description =
-    "Practical tea education exploring leaf, water, teaware, culture and mindful preparation. Established 2015.";
-
-  return {
-    metadataBase: new URL(base),
-    title,
-    description,
-    icons: {
-      icon: "/favicon.svg",
-      shortcut: "/favicon.svg",
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Being Tea Co. | Tea culture from leaf to golden light",
+    template: "%s | Being Tea Co.",
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "Tea education",
+  alternates: { canonical: "/" },
+  icons: {
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      images: [{ url: `${base}/og.png`, width: 1536, height: 869, alt: "Being Tea Co. — Tea culture from leaf to golden light." }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [`${base}/og.png`],
-    },
-  };
-}
+  },
+  openGraph: {
+    title: "Being Tea Co. | Tea culture from leaf to golden light",
+    description: SITE_DESCRIPTION,
+    type: "website",
+    url: "/",
+    siteName: SITE_NAME,
+    locale: "en_US",
+    images: [
+      {
+        url: "/og.png",
+        width: 1731,
+        height: 909,
+        alt: "Being Tea Co. — tea culture from leaf to golden light.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Being Tea Co. | Tea culture from leaf to golden light",
+    description: SITE_DESCRIPTION,
+    creator: "@BeingTeaCo",
+    images: ["/og.png"],
+  },
+};
 
 export default function RootLayout({
   children,

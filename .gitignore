@@ -29,6 +29,8 @@ yarn-error.log*
 .pnpm-debug.log*
 dev.stdout.log
 dev.stderr.log
+*.stdout.log
+*.stderr.log
 
 # env files (can opt-in for committing if needed)
 .env*
@@ -38,6 +40,7 @@ dev.stderr.log
 
 # typescript
 next-env.d.ts
+*.tsbuildinfo
 /dist/
 /.wrangler/
 /outputs/

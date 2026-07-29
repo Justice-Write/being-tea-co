@@ -1,6 +1,17 @@
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/SiteChrome";
 import { socialPosts } from "../content/social";
+import { pageMetadata } from "../lib/site";
+
+export const metadata = pageMetadata({
+  title: "Private Editorial Studio",
+  description:
+    "Owner review room for Being Tea Co. social drafts and editorial planning.",
+  path: "/studio",
+  image: "/images/landing/studio.webp",
+  imageAlt: "A private tea editorial workspace.",
+  robots: { index: false, follow: false, noarchive: true },
+});
 
 const monthName = (date: string) =>
   new Intl.DateTimeFormat("en-US", { month: "long" }).format(new Date(`${date}T12:00:00`));

@@ -1,4 +1,15 @@
 import { SiteFooter, SiteHeader } from "../components/SiteChrome";
+import { pageMetadata } from "../lib/site";
+
+export const metadata = pageMetadata({
+  title: "Editorial Standards & Review Policy",
+  description:
+    "How Being Tea Co. handles evidence, cultural attribution, product reviews, commercial relationships, corrections, and AI-generated editorial imagery.",
+  path: "/standards",
+  image: "/images/landing/standards.webp",
+  imageAlt:
+    "Tea notes and tools representing the Being Tea Co. editorial standards.",
+});
 
 export default function StandardsPage() {
   return (

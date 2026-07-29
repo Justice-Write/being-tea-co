@@ -1,10 +1,35 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { JsonLd } from "../../components/JsonLd";
 import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
+import { teaImageAlt } from "../../content/imageAlt";
 import { teaFamilies } from "../../content/library";
+import {
+  breadcrumbJsonLd,
+  pageMetadata,
+} from "../../lib/site";
 
 export function generateStaticParams() {
   return teaFamilies.map((tea) => ({ slug: tea.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const tea = teaFamilies.find((item) => item.slug === slug);
+  if (!tea) return {};
+
+  return pageMetadata({
+    title: `${tea.name}: Processing, Flavor, Brewing & Storage`,
+    description: `${tea.definition} Learn representative styles, a measured brewing starting point, storage guidance, and questions to ask before buying.`,
+    path: `/tea/${tea.slug}`,
+    image: `/images/tea/${tea.slug}.webp`,
+    imageAlt: teaImageAlt[tea.slug],
+  });
 }
 
 export default async function TeaPage({
@@ -18,9 +43,15 @@ export default async function TeaPage({
 
   const current = teaFamilies.findIndex((item) => item.slug === slug);
   const next = teaFamilies[(current + 1) % teaFamilies.length];
+  const breadcrumbs = breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Tea library", path: "/learn" },
+    { name: tea.name, path: `/tea/${tea.slug}` },
+  ]);
 
   return (
     <main>
+      <JsonLd data={breadcrumbs} />
       <SiteHeader />
       <article className="guide">
         <header

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SOCIAL_LINKS } from "../lib/site";
 
 export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
   return (
@@ -12,8 +13,8 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
         <Link href="/brew">Brew</Link>
         <Link href="/journal">Journal</Link>
         <Link href="/shop">Tea &amp; tools</Link>
-        <Link className="nav-cta" href="/#story">
-          Our story
+        <Link className="nav-cta" href="/about">
+          About
         </Link>
       </nav>
     </header>
@@ -28,14 +29,19 @@ export function SiteFooter() {
         <span>Being Tea Co.</span>
       </Link>
       <p>Tea culture from leaf to golden light.</p>
-      <div>
-        <a href="https://www.instagram.com/beingteaco/" target="_blank" rel="noreferrer">
+      <div className="footer-links">
+        <Link href="/about">About</Link>
+        <Link href="/contact">Contact</Link>
+        <Link href="/disclosures">Disclosures</Link>
+        <Link href="/privacy">Privacy</Link>
+        <Link href="/terms">Terms</Link>
+        <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noreferrer">
           Instagram
         </a>
-        <a href="https://x.com/BeingTeaCo" target="_blank" rel="noreferrer">
+        <a href={SOCIAL_LINKS.x} target="_blank" rel="noreferrer">
           X
         </a>
-        <a href="https://beingteaco.wordpress.com/" target="_blank" rel="noreferrer">
+        <a href={SOCIAL_LINKS.archive} target="_blank" rel="noreferrer">
           Archive
         </a>
       </div>

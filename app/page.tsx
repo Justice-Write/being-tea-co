@@ -1,3 +1,47 @@
+import Link from "next/link";
+import { JsonLd } from "./components/JsonLd";
+import { SiteFooter, SiteHeader } from "./components/SiteChrome";
+import {
+  SITE_DESCRIPTION,
+  SITE_EMAIL,
+  SITE_NAME,
+  SITE_URL,
+  SOCIAL_LINKS,
+  absoluteUrl,
+} from "./lib/site";
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${SITE_URL}/#organization`,
+  name: SITE_NAME,
+  alternateName: "Being Tea Co",
+  url: SITE_URL,
+  logo: absoluteUrl("/logo.svg"),
+  image: absoluteUrl("/og.png"),
+  description: SITE_DESCRIPTION,
+  email: SITE_EMAIL,
+  foundingDate: "2015",
+  sameAs: [
+    SOCIAL_LINKS.instagram,
+    SOCIAL_LINKS.x,
+    SOCIAL_LINKS.youtube,
+    SOCIAL_LINKS.archive,
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  name: SITE_NAME,
+  alternateName: ["Being Tea Co", "BeingTeaCo"],
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  inLanguage: "en-US",
+  publisher: { "@id": `${SITE_URL}/#organization` },
+};
+
 const lessons = [
   {
     number: "01",
@@ -31,6 +75,8 @@ const path = [
 export default function Home() {
   return (
     <main>
+      <JsonLd data={organizationJsonLd} />
+      <JsonLd data={websiteJsonLd} />
       <SiteHeader overlay />
 
       <section className="hero" id="top">
@@ -210,5 +256,3 @@ export default function Home() {
     </main>
   );
 }
-import Link from "next/link";
-import { SiteFooter, SiteHeader } from "./components/SiteChrome";

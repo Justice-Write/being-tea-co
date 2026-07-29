@@ -1,6 +1,17 @@
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/SiteChrome";
 import { blogs } from "../content/blogs";
+import { pageMetadata } from "../lib/site";
+
+export const metadata = pageMetadata({
+  title: "Tea Journal: Research, Culture & Practice",
+  description:
+    "Research-backed tea essays on the plant, processing, water, brewing, storage, teaware, cultural attribution, mindful practice, and caffeine.",
+  path: "/journal",
+  image: "/images/landing/journal.webp",
+  imageAlt:
+    "A tea journal, brewing tools, and leaves arranged for Being Tea Co. field notes.",
+});
 
 export default function JournalPage() {
   return (

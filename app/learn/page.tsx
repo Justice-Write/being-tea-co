@@ -1,6 +1,18 @@
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/SiteChrome";
+import { brewImageAlt, teaImageAlt } from "../content/imageAlt";
 import { brewMethods, teaFamilies } from "../content/library";
+import { pageMetadata } from "../lib/site";
+
+export const metadata = pageMetadata({
+  title: "Tea Types & Processing Guide",
+  description:
+    "Explore white, green, yellow, oolong, black, dark, sheng and shou Pu-erh teas, plus tisanes, through processing, flavor, brewing, storage, and buying questions.",
+  path: "/learn",
+  image: "/images/landing/learn.webp",
+  imageAlt:
+    "Tea leaves, vessels, and clear infusions arranged for the Being Tea Co. tea library.",
+});
 
 export default function LearnPage() {
   return (
@@ -33,7 +45,7 @@ export default function LearnPage() {
             <img
               className="family-card-image"
               src={`/images/tea/${tea.slug}.webp`}
-              alt=""
+              alt={teaImageAlt[tea.slug]}
             />
             <span className="card-index">{String(index + 1).padStart(2, "0")}</span>
             <span className="card-process">{tea.eyebrow}</span>
@@ -73,7 +85,10 @@ export default function LearnPage() {
         <div className="method-list compact">
           {brewMethods.slice(0, 5).map((method) => (
             <Link href={`/brew/${method.slug}`} key={method.slug}>
-              <img src={`/images/brew/${method.slug}.webp`} alt="" />
+              <img
+                src={`/images/brew/${method.slug}.webp`}
+                alt={brewImageAlt[method.slug]}
+              />
               <span>{method.bestFor}</span>
               <strong>{method.name}</strong>
               <b>→</b>
