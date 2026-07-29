@@ -20,7 +20,11 @@ export default async function BrewMethodPage({
     <main>
       <SiteHeader />
       <article className="method-guide">
-        <header>
+        <header
+          style={{
+            backgroundImage: `linear-gradient(110deg, rgba(15,42,35,.96), rgba(31,66,51,.68)), url("/images/brew/${method.slug}.webp")`,
+          }}
+        >
           <Link href="/brew">← Preparation library</Link>
           <p className="eyebrow">{method.bestFor}</p>
           <h1>{method.name}</h1>

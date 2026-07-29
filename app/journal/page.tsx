@@ -2,14 +2,6 @@ import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/SiteChrome";
 import { blogs } from "../content/blogs";
 
-const imageFor = (id: string) => {
-  const number = Number(id.slice(1));
-  if ([1, 3, 4].includes(number)) return "/images/leaf-processing.png";
-  if ([8, 9].includes(number)) return "/images/puerh-storage.png";
-  if ([7, 10, 11].includes(number)) return "/images/teaware-methods.png";
-  return "/images/golden-light-oolong.png";
-};
-
 export default function JournalPage() {
   return (
     <main>
@@ -26,7 +18,10 @@ export default function JournalPage() {
       <section className="journal-grid">
         {blogs.map((post, index) => (
           <Link className={index === 0 ? "featured-post" : ""} href={`/journal/${post.slug}`} key={post.id}>
-            <img src={imageFor(post.id)} alt="" />
+            <img
+              src={`/images/journal/${post.id.toLowerCase()}.webp`}
+              alt={post.altText}
+            />
             <div>
               <span>{post.category} · {post.date}</span>
               <h2>{post.title}</h2>

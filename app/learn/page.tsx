@@ -6,7 +6,7 @@ export default function LearnPage() {
   return (
     <main>
       <SiteHeader />
-      <section className="inner-hero">
+      <section className="inner-hero learn-hero">
         <p className="eyebrow">The Being Tea Co. field guide</p>
         <h1>Know the leaf.<br /><em>Then listen to it.</em></h1>
         <p>
@@ -30,6 +30,11 @@ export default function LearnPage() {
       <section className="family-grid">
         {teaFamilies.map((tea, index) => (
           <Link href={`/tea/${tea.slug}`} className="family-card" key={tea.slug}>
+            <img
+              className="family-card-image"
+              src={`/images/tea/${tea.slug}.webp`}
+              alt=""
+            />
             <span className="card-index">{String(index + 1).padStart(2, "0")}</span>
             <span className="card-process">{tea.eyebrow}</span>
             <h2>{tea.name}</h2>
@@ -68,6 +73,7 @@ export default function LearnPage() {
         <div className="method-list compact">
           {brewMethods.slice(0, 5).map((method) => (
             <Link href={`/brew/${method.slug}`} key={method.slug}>
+              <img src={`/images/brew/${method.slug}.webp`} alt="" />
               <span>{method.bestFor}</span>
               <strong>{method.name}</strong>
               <b>→</b>

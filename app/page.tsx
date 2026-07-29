@@ -55,15 +55,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div className="cup-study" aria-label="An abstract study of golden tea in a cup">
-          <div className="steam steam-one" />
-          <div className="steam steam-two" />
-          <div className="saucer" />
-          <div className="cup">
-            <div className="tea">
-              <span className="glint" />
-            </div>
-          </div>
+        <div className="cup-study">
           <p>
             <span>The golden light</span>
             A clear twinkle that appears when a tea feels balanced in the cup.

@@ -27,6 +27,11 @@ export default function BrewPage() {
       <section className="method-cards">
         {brewMethods.map((method, index) => (
           <Link href={`/brew/${method.slug}`} key={method.slug}>
+            <img
+              className="method-card-image"
+              src={`/images/brew/${method.slug}.webp`}
+              alt=""
+            />
             <span className="method-number">{String(index + 1).padStart(2, "0")}</span>
             <p>{method.bestFor}</p>
             <h2>{method.name}</h2>

@@ -4,9 +4,15 @@ export default function StandardsPage() {
   return (
     <main>
       <SiteHeader />
-      <section className="policy-page">
+      <section className="inner-hero standards-hero">
         <p className="eyebrow">How we work</p>
-        <h1>Editorial standards.</h1>
+        <h1>Editorial<br /><em>standards.</em></h1>
+        <p>
+          Observation, evidence, cultural attribution, transparent reviews and
+          visible commercial disclosures belong at the same table.
+        </p>
+      </section>
+      <section className="policy-page">
         <p className="policy-lead">
           Being Tea Co. separates observation from evidence, tradition from
           universal claims, and useful recommendations from commercial

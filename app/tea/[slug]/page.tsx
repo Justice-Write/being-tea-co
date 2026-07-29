@@ -23,7 +23,12 @@ export default async function TeaPage({
     <main>
       <SiteHeader />
       <article className="guide">
-        <header className="guide-header">
+        <header
+          className="guide-header"
+          style={{
+            backgroundImage: `linear-gradient(115deg, rgba(17,46,37,.97), rgba(39,73,57,.72)), url("/images/tea/${tea.slug}.webp")`,
+          }}
+        >
           <Link href="/learn">← Tea library</Link>
           <p className="eyebrow">{tea.eyebrow}</p>
           <h1>{tea.name}</h1>

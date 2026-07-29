@@ -45,6 +45,15 @@ export default function StudioPage() {
                     <b>Staged</b>
                   </summary>
                   <div className="draft-body">
+                    <figure className="draft-visual">
+                      <img
+                        src={`/images/social/${post.id.toLowerCase()}.webp`}
+                        alt={post.altText}
+                      />
+                      <figcaption>
+                        AI-generated visual concept · staged, not published
+                      </figcaption>
+                    </figure>
                     <div className="draft-meta">
                       <p><span>Pillar</span>{post.pillar}</p>
                       <p><span>Platforms</span>{post.platforms.join(" · ")}</p>

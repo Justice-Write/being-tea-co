@@ -4,14 +4,6 @@ import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
 import { RichText } from "../../components/RichText";
 import { blogs } from "../../content/blogs";
 
-const imageFor = (id: string) => {
-  const number = Number(id.slice(1));
-  if ([1, 3, 4].includes(number)) return "/images/leaf-processing.png";
-  if ([8, 9].includes(number)) return "/images/puerh-storage.png";
-  if ([7, 10, 11].includes(number)) return "/images/teaware-methods.png";
-  return "/images/golden-light-oolong.png";
-};
-
 export function generateStaticParams() {
   return blogs.map((post) => ({ slug: post.slug }));
 }
@@ -38,10 +30,13 @@ export default async function JournalPost({
           <p>{post.dek.replace(/\*/g, "")}</p>
         </header>
         <figure>
-          <img src={imageFor(post.id)} alt={post.altText} />
+          <img
+            src={`/images/journal/${post.id.toLowerCase()}.webp`}
+            alt={post.altText}
+          />
           <figcaption>
-            Being Tea Co. editorial illustration. It does not depict a specific
-            tea lot, maker, ceremony or reviewed product.
+            AI-generated Being Tea Co. editorial concept. It does not depict a
+            specific tea lot, maker, ceremony or reviewed product.
           </figcaption>
         </figure>
         <div className="article-layout">
