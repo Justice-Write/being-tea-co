@@ -1,0 +1,51 @@
+import Link from "next/link";
+import { SiteFooter, SiteHeader } from "../components/SiteChrome";
+import { blogs } from "../content/blogs";
+
+const imageFor = (id: string) => {
+  const number = Number(id.slice(1));
+  if ([1, 3, 4].includes(number)) return "/images/leaf-processing.png";
+  if ([8, 9].includes(number)) return "/images/puerh-storage.png";
+  if ([7, 10, 11].includes(number)) return "/images/teaware-methods.png";
+  return "/images/golden-light-oolong.png";
+};
+
+export default function JournalPage() {
+  return (
+    <main>
+      <SiteHeader />
+      <section className="inner-hero journal-hero">
+        <p className="eyebrow">Four months at the tea table</p>
+        <h1>Field notes for<br /><em>better attention.</em></h1>
+        <p>
+          Twelve researched essays moving from the living plant through
+          processing, preparation, storage, culture and the felt experience of
+          drinking tea.
+        </p>
+      </section>
+      <section className="journal-grid">
+        {blogs.map((post, index) => (
+          <Link className={index === 0 ? "featured-post" : ""} href={`/journal/${post.slug}`} key={post.id}>
+            <img src={imageFor(post.id)} alt="" />
+            <div>
+              <span>{post.category} · {post.date}</span>
+              <h2>{post.title}</h2>
+              <p>{post.dek.replace(/\*/g, "")}</p>
+              <em>{post.readTime} read</em>
+            </div>
+          </Link>
+        ))}
+      </section>
+      <section className="studio-callout">
+        <div>
+          <p className="section-kicker">Owner’s editorial room</p>
+          <h2>Thirty-six social posts are staged behind this draft.</h2>
+        </div>
+        <Link className="primary-button dark-button" href="/studio">
+          Review the calendar <span>→</span>
+        </Link>
+      </section>
+      <SiteFooter />
+    </main>
+  );
+}

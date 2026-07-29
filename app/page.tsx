@@ -31,20 +31,7 @@ const path = [
 export default function Home() {
   return (
     <main>
-      <header className="site-header">
-        <a className="wordmark" href="#top" aria-label="Being Tea Co home">
-          <span className="seal">B</span>
-          <span>Being Tea Co.</span>
-        </a>
-        <nav aria-label="Main navigation">
-          <a href="#learn">Learn</a>
-          <a href="#story">Our story</a>
-          <a href="#archive">Archive</a>
-          <a className="nav-cta" href="mailto:beingteaco@gmail.com">
-            Write to us
-          </a>
-        </nav>
-      </header>
+      <SiteHeader overlay />
 
       <section className="hero" id="top">
         <div className="hero-copy">
@@ -60,9 +47,9 @@ export default function Home() {
             and the shared cup.
           </p>
           <div className="hero-actions">
-            <a className="primary-button" href="#learn">
+            <Link className="primary-button" href="/learn">
               Begin with the cup <span aria-hidden="true">→</span>
-            </a>
+            </Link>
             <a className="text-link" href="#story">
               Read our story
             </a>
@@ -120,7 +107,9 @@ export default function Home() {
               </div>
               <h3>{lesson.title}</h3>
               <p>{lesson.copy}</p>
-              <span className="coming">Guides coming soon</span>
+              <Link className="coming" href={lesson.number === "01" ? "/brew" : lesson.number === "02" ? "/learn" : "/brew"}>
+                Open the guide →
+              </Link>
             </article>
           ))}
         </div>
@@ -225,19 +214,9 @@ export default function Home() {
         </div>
       </section>
 
-      <footer>
-        <a className="wordmark footer-mark" href="#top">
-          <span className="seal">B</span>
-          <span>Being Tea Co.</span>
-        </a>
-        <p>Tea culture from leaf to golden light.</p>
-        <div>
-          <a href="https://www.instagram.com/beingteaco/" target="_blank" rel="noreferrer">Instagram</a>
-          <a href="https://x.com/BeingTeaCo" target="_blank" rel="noreferrer">X</a>
-          <a href="https://beingteaco.wordpress.com/" target="_blank" rel="noreferrer">Archive</a>
-        </div>
-        <small>Independent tea education · Established 2015</small>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
+import Link from "next/link";
+import { SiteFooter, SiteHeader } from "./components/SiteChrome";
