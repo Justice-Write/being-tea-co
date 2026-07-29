@@ -1,98 +1,76 @@
-# vinext-starter
+# Being Tea Co.
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+Being Tea Co. is an independent tea-culture education project established in
+2015. It follows tea from seed, harvest, and processing through storage,
+brewing, teaware, service, and the sensory experience of a well-prepared cup.
 
-## Prerequisites
+The project draws on firsthand practice at Deer Park Monastery in Escondido,
+California, in the Plum Village tradition. Being Tea Co. is independent and is
+not an official project of, or endorsed by, Deer Park Monastery, Plum Village,
+or the estate of Thích Nhất Hạnh.
 
-- Node.js `>=22.13.0`
+## What is included
 
-## Quick Start
+- A tea library spanning white, green, yellow, oolong, black, dark, and
+  Pu-erh tea.
+- Practical Western, gongfu, grandpa-style, cold-brew, matcha, and simmered-tea
+  preparation guides.
+- A twelve-article educational journal with source and evidence standards.
+- A private editorial studio staging thirty-six social posts and their unique
+  visuals.
+- About, contact, privacy, terms, and commercial-disclosure pages.
+- A researched shop roadmap for affiliate recommendations and no-inventory
+  merchandise. No paid product links are active in this release.
+
+## Editorial position
+
+Personal experience is labeled as personal experience. Historical, scientific,
+health, provenance, and commercial claims are sourced and reviewed according to
+the site's published standards. Affiliate approval will not determine a review
+conclusion, and any future paid relationship must be disclosed beside the
+relevant recommendation.
+
+## Local development
+
+Requirements:
+
+- Node.js 22.13 or newer
+
+Install and run:
 
 ```bash
 npm install
 npm run dev
-npm run build
 ```
 
-This starter does not use `wrangler.jsonc`.
+Validate the complete rendered site:
 
-## Included Shape
-
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
-
-## Workspace Auth Headers
-
-OpenAI workspace sites can read the current user's email from
-`oai-authenticated-user-email`.
-
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```bash
+npm test
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+## Main project areas
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+- `app/` — pages, structured search metadata, and editorial content.
+- `public/images/` — the visual library used across the site and staged posts.
+- `tests/` — rendered-route, search, disclosure, and unique-image checks.
+- `image-manifests/` — generation notes and asset provenance records.
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+## Publishing
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
+GitHub is the public source and history for the project. The website itself is
+deployed through a host that permits commercial and affiliate use. GitHub Pages
+is intentionally not enabled because GitHub states that Pages is not intended
+or allowed as free hosting for an online business, e-commerce site, or a site
+primarily facilitating commercial transactions.
 
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
+See [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits).
 
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
+## Rights
 
-## Useful Commands
+Unless a file says otherwise, the Being Tea Co. name, logo, original site copy,
+photography, generated visual assets, and editorial collections are
+copyright-protected and are not offered under an open-source or Creative Commons
+license. Third-party libraries remain subject to their respective licenses.
 
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
-
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+Contact: [beingteaco@gmail.com](mailto:beingteaco@gmail.com)
