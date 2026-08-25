@@ -221,7 +221,7 @@ export const socialPosts = [
       },
       {
         "label": "FAO",
-        "url": "https://www.fao.org/international-tea-day/home/international-tea-day-2025/en"
+        "url": "https://www.fao.org/international-tea-day/en"
       }
     ],
     "crosslink": "/journal/seed-to-cup-chain-of-choices",
@@ -247,7 +247,7 @@ export const socialPosts = [
     "sourceLinks": [
       {
         "label": "FAO International Tea Day",
-        "url": "https://www.fao.org/international-tea-day/home/international-tea-day-2025/en"
+        "url": "https://www.fao.org/international-tea-day/en"
       },
       {
         "label": "FAO 2026 community focus",
@@ -277,7 +277,7 @@ export const socialPosts = [
     "sourceLinks": [
       {
         "label": "FAO International Tea Day",
-        "url": "https://www.fao.org/international-tea-day/home/international-tea-day-2025/en"
+        "url": "https://www.fao.org/international-tea-day/en"
       },
       {
         "label": "UNESCO tea processing heritage",
@@ -1053,7 +1053,7 @@ export const socialPosts = [
     "sourceLinks": [
       {
         "label": "FAO tea livelihoods",
-        "url": "https://www.fao.org/international-tea-day/home/international-tea-day-2025/en"
+        "url": "https://www.fao.org/international-tea-day/en"
       },
       {
         "label": "Tea-bag infusion study",
