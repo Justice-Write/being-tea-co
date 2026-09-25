@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/SiteChrome";
-import { blogs } from "../content/blogs";
+import { publishedBlogs } from "../content/blogs";
 import { pageMetadata } from "../lib/site";
 
 export const metadata = pageMetadata({
@@ -14,6 +14,8 @@ export const metadata = pageMetadata({
 });
 
 export default function JournalPage() {
+  const posts = publishedBlogs();
+
   return (
     <main>
       <SiteHeader />
@@ -27,7 +29,7 @@ export default function JournalPage() {
         </p>
       </section>
       <section className="journal-grid">
-        {blogs.map((post, index) => (
+        {posts.map((post, index) => (
           <Link className={index === 0 ? "featured-post" : ""} href={`/journal/${post.slug}`} key={post.id}>
             <img
               src={`/images/journal/${post.id.toLowerCase()}.webp`}

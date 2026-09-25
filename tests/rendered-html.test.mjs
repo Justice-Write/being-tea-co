@@ -1,10 +1,30 @@
 import assert from "node:assert/strict";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 
 const workerUrl = new URL("../dist/server/index.js", import.meta.url);
 workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
 const { default: worker } = await import(workerUrl.href);
+
+const blogSource = readFileSync(
+  new URL("../app/content/blogs.ts", import.meta.url),
+  "utf8",
+);
+const alaskaToday = Object.fromEntries(
+  new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Anchorage",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  })
+    .formatToParts(new Date())
+    .map((part) => [part.type, part.value]),
+);
+const today = `${alaskaToday.year}-${alaskaToday.month}-${alaskaToday.day}`;
+const scheduledBlogDates = [
+  ...blogSource.matchAll(/"date": "(\d{4}-\d{2}-\d{2})"/g),
+].map((match) => match[1]);
+const publishedBlogCount = scheduledBlogDates.filter((date) => date <= today).length;
 
 async function render(pathname) {
   return worker.fetch(
@@ -73,7 +93,7 @@ test("tea and brew library buttons each reference a unique image", async () => {
   assert.equal(brewImages.size, 9);
 });
 
-test("journal index references twelve distinct article headers", async () => {
+test("journal index references only articles whose release date has arrived", async () => {
   const html = await htmlFor("/journal");
   const images = new Set(
     [...html.matchAll(/\/images\/journal\/(b\d{2})\.webp/g)].map(
@@ -81,7 +101,7 @@ test("journal index references twelve distinct article headers", async () => {
     ),
   );
 
-  assert.equal(images.size, 12);
+  assert.equal(images.size, publishedBlogCount);
   assert.doesNotMatch(
     html,
     /golden-light-oolong\.png|leaf-processing\.png|puerh-storage\.png/,
@@ -192,8 +212,8 @@ test("sitemap lists every public route and robots excludes the studio", async ()
     ),
   ].map((match) => match[1] || "/");
 
-  assert.equal(urls.length, 41);
-  assert.equal(new Set(urls).size, 41);
+  assert.equal(urls.length, 29 + publishedBlogCount);
+  assert.equal(new Set(urls).size, urls.length);
   assert.ok(!urls.includes("/studio"));
   assert.match(robots, /Disallow: \/studio/);
   assert.match(
