@@ -3,7 +3,7 @@ import { publishedBlogs } from "./content/blogs";
 import { brewMethods, teaFamilies } from "./content/library";
 import { absoluteUrl } from "./lib/site";
 
-const UPDATED = new Date("2026-07-29T12:00:00Z");
+const UPDATED = new Date("2026-09-24T12:00:00Z");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogs = publishedBlogs();
@@ -44,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...blogs.map((post) => ({
       url: absoluteUrl(`/journal/${post.slug}`),
-      lastModified: UPDATED,
+      lastModified: new Date(`${post.date}T12:00:00Z`),
       changeFrequency: "yearly" as const,
       priority: 0.75,
       images: [
