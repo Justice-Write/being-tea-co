@@ -235,6 +235,17 @@ test("trust pages use five distinct page images", async () => {
   );
 });
 
+test("companion privacy notice states local-only storage and notice limits", async () => {
+  const html = await htmlFor("/companion/privacy");
+
+  assert.match(html, /no Being Tea Co\. account/);
+  assert.match(html, /Nothing is uploaded to Being Tea Co\. servers/);
+  assert.match(html, /not a guaranteed alarm/);
+  assert.match(html, /not directed to children under 13/);
+  assert.match(html, /mailto:beingteaco@gmail\.com/);
+  assert.match(html, /<meta name="robots" content="noindex, nofollow"/);
+});
+
 test("projects page keeps vendor research and unapproved commerce private", async () => {
   const html = await htmlFor("/shop");
 
@@ -259,7 +270,7 @@ test("sitemap lists approved routes and staging robots prevent indexing", async 
     ),
   ].map((match) => match[1] || "/");
 
-  assert.equal(urls.length, 29 + publishedBlogCount);
+  assert.equal(urls.length, 30 + publishedBlogCount);
   assert.equal(new Set(urls).size, urls.length);
   assert.ok(!urls.includes("/studio"));
   assert.match(robots, /Disallow: \/(?:\r?\n|$)/);
