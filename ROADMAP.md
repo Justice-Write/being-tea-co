@@ -21,5 +21,6 @@ See `ROADMAP-EXECUTION-2026-09-27.md`. No default-branch merge has occurred. The
 
 ## Changelog
 
+- 2026-10-16 — Branch `review/journal-b06-b12-20261016` (ad3e02e) carries the 10 source-check edits and re-dates B06–B12 to Mondays Oct 19–Nov 30. Not merged; no article approved. Confirmed article routes render per request (no prerendered HTML), so the Alaska date gate needs no redeploy.
 - 2026-10-14 — B06–B12 source check complete (brief linked above). Proposed re-dating B06–B12 to consecutive Mondays Oct 19–Nov 30 pending owner approval.
 - 2026-10-13 — Owner lifted the installation hold for Being Tea Co; chose Cloudflare preview first for this candidate and GitHub Pages for Steep Timer (live 2026-10-14 at https://justice-write.github.io/Steep-Timer/).
