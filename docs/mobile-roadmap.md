@@ -92,3 +92,7 @@ Android debug build and automated checks passed; signature verified, installed i
 Remaining: Device-lock/process-death notification verification, iOS build and store preparation.
 
 Portfolio evidence: `mobile-publishing-2026-09-20/design-apks/phone-verification.json`, app build log, and `DESIGN-ROADMAP-STATUS.md`. Older environment limitations above are historical; the phone is now connected.
+
+## Changelog
+
+- 2026-10-16 — Release prep without device or secrets: release signing wired to a git-ignored `keystore.properties` (template added); keystores and signing properties now git-ignored (the lines were commented out before); `npm run android:aab` added; Play checklist updated with keytool, bundle and upload steps; companion privacy route prepared on the site branch `site/companion-privacy-20261016`. brew-core 28/28 pass. Gradle not run here (no Android SDK in this environment). Still human-gated: Doze/lock-screen/process-death notice checks, iOS build on a Mac, keystore creation, Play upload.

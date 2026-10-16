@@ -9,6 +9,7 @@
     "preview": "vite preview --host 127.0.0.1 --port 5174",
     "cap:sync": "npm run build && npx cap sync",
     "android:apk": "npm run cap:sync && cd android && ./gradlew assembleDebug",
+    "android:aab": "npm run cap:sync && cd android && ./gradlew bundleRelease",
     "test:smoke": "node tests/smoke.mjs"
   },
   "dependencies": {
