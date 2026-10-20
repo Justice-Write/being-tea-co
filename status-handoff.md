@@ -67,7 +67,7 @@ Any LLM or person working in this repo follows these rules. No exceptions for "s
 
 ## 5. Current state (2026-10-20)
 
-- `codex/roadmap-sites-20260927` at `84a5a9d`, **3 commits ahead of origin (unpushed)**. `status-handoff.md`, `CLAUDE.md` and `AGENTS.md` were added 2026-10-20.
+- `codex/roadmap-sites-20260927` is **5 commits ahead of origin (unpushed)**; the latest commit adds and updates this file. `AGENTS.md` is untracked (see §7).
 - **Preview not deployed.** The Cloudflare account has one Worker (`nooyouniverse`) and no `being-tea-co` (checked 2026-10-20).
 - Journal: B01–B05 approved and live in the build. B06–B12 are withheld. All B06–B12 citations were source-checked 2026-10-14: every source exists, and 10 sentences overstated their source. The fixes and new Monday dates (B06 10/19, B07 10/26, B08 11/2, B09 11/9, B10 11/16, B11 11/23, B12 11/30) are on the review branch. B06 and B07's new dates have now passed too, so re-date again at approval time. B10/B11 carry a `cultural-review` gate and B12 a `health-review` gate.
 - `/companion/privacy` exists on its branch; the copy needs owner approval.
@@ -98,6 +98,7 @@ Any LLM or person working in this repo follows these rules. No exceptions for "s
 - The tea worktree shares this repo's `.git`. Don't put `status-handoff.md` in `.git/info/exclude` here: that hides the handoff in every worktree.
 - Several branches exist only locally. Codex works on `codex/*` branches. Don't switch the main checkout and leave it switched; use a worktree or a scratch clone.
 - GitHub Pages is intentionally **not** enabled for this repo (commercial-use limits), so root `.md` files are not served. They are visible to anyone who can see the GitHub repo.
+- **Git from the Cowork Linux shell needs delete permission** on the GitHub folder. Without it, `git commit` leaves `.git/HEAD.lock` and `.git/objects/maintenance.lock` behind, and every later git command (the owner's too) fails with 'File exists'. Get the permission before committing; if locks were left, move or remove only the ones your own command created.
 - `AGENTS.md` here is deliberately **untracked**: `codex/mac-handoff-20260923` has its own tracked `AGENTS.md`, and committing a second one would conflict at merge time. Merge the handoff section into that file when the lines merge. `CLAUDE.md` is tracked.
 - Untracked dev logs (`dev.*.log`, `monetization-dev.*.log`) sit in the root. Leave them.
 - Content rules: no paid links, no health claims, cultural specificity (name traditions and peoples), and Deer Park is mentioned only with "independent and unaffiliated". Never publish the private founder reference.
