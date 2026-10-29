@@ -1,6 +1,6 @@
 # status-handoff — Being Tea Co.
 
-**Last updated:** 2026-10-20 by Claude Opus 5.5 (Cowork, being-tea-co project session)
+**Last updated:** 2026-10-27 by Codex (local print/delivery readiness)
 **Canonical:** this file is the single source of truth for *current status*. `ROADMAP.md` is the task list and changelog; `ROADMAP-EXECUTION-2026-09-27.md` and `README.md` hold release-gate detail.
 
 ---
@@ -27,8 +27,7 @@ Any LLM or person working in this repo follows these rules. No exceptions for "s
 
 ## 1. In progress
 
-- *(nothing in progress)*
-
+- 2026-10-29 06:20 UTC · Claude Opus 5.5 (Cowork, being tea co project session) · Recovery after the ChatGPT history loss: snapshot all uncommitted/untracked work to branch `chore/recovery-20261028` (temp index; working tree, real index and checked-out branch untouched), back up local-only branches as a git bundle in `../_backups/being-tea-co/2026-10-28-recovery/`, then rewrite this handoff's current state and add the Being Tea Co program handoff. If this entry is still here, that work was interrupted.
 ---
 
 ## 2. What this project is
@@ -65,7 +64,18 @@ Any LLM or person working in this repo follows these rules. No exceptions for "s
 - Journal gate: `approvedBlogIds` in `app/content/blogs.ts`, plus `date <= today (America/Anchorage)`, plus no `publicationGate`. Routes render per request (no prerendered HTML), so a date gate opens without a redeploy.
 - Native app: `npm run test:brew-core` (node `--experimental-strip-types`, needs no install; 28/28 on 2026-10-16). `cd mobile && npm run android:apk` (debug) or `npm run android:aab` (release; needs `mobile/android/keystore.properties`, which git ignores).
 
-## 5. Current state (2026-10-20)
+## 5. Current state (2026-10-27 local readiness; production evidence dated 2026-10-24)
+
+- 2026-10-27: source ownership restored to this implementation task; recovery chat is editorial-drafts only. Added local one-page A4/US Letter proofs for the existing free brew log, HTML links, source generator and integrity/readiness docs. Both final PDF renders visually pass; actual local app PDF/HTML delivery, MIME and SHA-256 checks pass. Build + existing 13/13 route tests + typecheck pass. Physical print and all paid-provider lifecycle tests remain unrun. No publishing/access/payment/installation or product/price/provider decisions. Dirty work preserved; see docs/free-brew-notes-readiness.md.
+
+
+- Production remains the newer WordPress.com site at beingteaco.com (site 102864778). The live site includes a botanical library, free newsletter and Between Steeps redesign that this repository lacks. Do not replace it from this older snapshot without reconciliation.
+- LIVE: Projects page 1022 gained one Akiko-inspired editorial group: precision, hospitality, discernment, free brew-note prompts, fictional-persona disclosure and clear commission/margin distinction. All 19 original block hashes preserved; no content warnings. Hash `068f1a4ddb93b59d9d8ed4ad15cf8da71b33e802`.
+- PAID LAUNCH BLOCKED: WordPress Monetize dashboard still requests Stripe connection and an offer. No approved price, active SKU or verified fulfillment/digital entitlement provider. No payment or access configuration changed. Between Steeps remains in redesign; old deck/sampler retired.
+- Local uncommitted edits: app/shop/page.tsx, app/disclosures/page.tsx, public/downloads/brew-notes.html; local build + 13/13 existing tests and typecheck pass. This code is not deployed. Backups in ../_backups/being-tea-co/2026-10-24-codex/.
+- Live public HTTP 200 and Sophia Edge 390px mobile visual check pass with no horizontal overflow. No newsletter signup, payment, receipt/refund or printer test run. No Git push, CI or Cloudflare deployment. Full report and WordPress before/inserted markup are in the Codex 2026-10-23/task-2 workspace.
+
+### Earlier branch state (2026-10-20)
 
 - `codex/roadmap-sites-20260927` is **5 commits ahead of origin (unpushed)**; the latest commit adds and updates this file. `AGENTS.md` is untracked (see §7).
 - **Preview not deployed.** The Cloudflare account has one Worker (`nooyouniverse`) and no `being-tea-co` (checked 2026-10-20).
@@ -76,6 +86,9 @@ Any LLM or person working in this repo follows these rules. No exceptions for "s
 - The owner lifted the portfolio installation hold for Being Tea Co on 2026-10-13.
 
 ## 6. Open items
+
+**2026-10-24 smallest commerce decisions:** approve first product/final files, exact price/currency/refund/markets; approve merchant account and Stripe-to-WordPress connection; choose verified digital entitlement/delivery; run safe test-mode lifecycle before opening payments. New paid commitments, terms, persistent access or live transactions remain paused for parent approval. Current free prompts are separate from Between Steeps and do not imply paid availability.
+
 
 **Agent-doable (needs the owner's go-ahead or URL first):**
 - After the owner deploys: verify the preview URL (all routes 200, `noindex` meta + `Disallow: /` robots, B06–B12 slugs 404, `/companion/privacy` renders) and record the results here.
@@ -105,6 +118,12 @@ Any LLM or person working in this repo follows these rules. No exceptions for "s
 - A passing local test is not editorial approval or live-release evidence.
 
 ## 8. Work log (newest first)
+
+- **2026-10-27 - Codex:** completed unblocked local print/delivery readiness for existing free brew log. Two one-page PDFs, HTML links, Python source generator, manifests and verification docs. Reopened/text/page-size/integrity checks pass; both final Poppler renders inspected; real localhost asset delivery 200/application/pdf and hashes match. Existing build+13/13 tests+typecheck pass. Temp dev server stopped. Backups ../_backups/being-tea-co/2026-10-27-codex/. No commit/push/publish, installations, paid actions, account access changes or unrelated-project writes. Remaining owner decisions unchanged; physical printer and paid lifecycle unrun.
+
+
+- **2026-10-24 — Codex, Sophia:** audited repository + actual live WordPress and payment dashboard. Published one scoped Akiko-inspired section to Projects page 1022 using WordPress.com block operations; all 19 original blocks preserved and unauthenticated live HTTP 200 verified. 390px visual check passes. Prepared local guidance/disclosure/printable changes; existing tests 13/13 + typecheck pass. No Git commit/push or replacement deploy; newer WordPress content must be preserved. Commerce blocked by no connected Stripe, approved offer/price or delivery provider. No account/security changes, purchases, newsletter/social/customer communications. Backups and detailed report recorded above. All requested escalation checks approved; no unresolved denied action.
+
 
 - **2026-10-20 — Claude Opus 5.5 (Cowork, being-tea-co project session):** Filled this handoff with verified state from the 2026-10-13…16 work and added the before/after update rule for every agent (see §0 and `CLAUDE.md`). Created matching handoffs for `../being-tea-timer` (kept local, since its root is the public site) and the native worktree `../mobile-publishing-2026-09-20/rebuilds/tea`. Committed `status-handoff.md` + `CLAUDE.md` here. `AGENTS.md` is left **untracked** on purpose: the `codex/mac-handoff-20260923` line has its own tracked `AGENTS.md`, so add the handoff section there when the lines merge.
 - **2026-10-20 — Claude (Cowork subagent):** Created this status-handoff.md baseline from repo docs and git log. No code changes.

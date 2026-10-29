@@ -28,16 +28,16 @@ export default function DisclosuresPage() {
       />
 
       <article className="prose-page legal-copy">
-        <p className="policy-date">Last updated July 29, 2026</p>
+        <p className="policy-date">Last updated October 24, 2026</p>
         <div className="current-status">
           <span className="status-dot" />
           <div>
             <strong>Current status</strong>
             <p>
               No paid affiliate product links, paid sponsors, or Being Tea Co.
-              products are active on this site today. Retailer application
-              links on the Tea &amp; Tools page are research references, not
-              commission links.
+              products are active on this site today. The free brew log
+              has no checkout or email signup. No retailer application links
+              are presented as recommendations.
             </p>
           </div>
         </div>
@@ -83,10 +83,19 @@ export default function DisclosuresPage() {
         <p>
           When Being Tea Co. sells its own design through a fulfillment
           provider, the product will say that it was designed for and sold by
-          Being Tea Co. and that Being Tea Co. receives the profit. A
+          Being Tea Co. Revenue from our own products is distinct from
+          affiliate commissions. Our margin would be the sale price less
+          payment, fulfillment, tax and other applicable costs; sales revenue
+          is not all profit. A
           manufacturer or retailer logo will not appear as a partner badge
           without written permission.
         </p>
+
+        <h2>Fictional editorial perspectives</h2>
+        <p>Akiko-inspired buying guidance is labeled as a fictional persona’s
+          editorial perspective. It does not represent a human product test,
+          a customer review, a qualification, or personal experience. Your brew
+          log records your observations, not a claim made by the persona.</p>
 
         <h2>AI-generated editorial imagery</h2>
         <p>
