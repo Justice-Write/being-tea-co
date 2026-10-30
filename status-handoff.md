@@ -96,10 +96,10 @@ exports are deployment or recovery data, not additional products.
   review. Passed dates do not constitute approval.
 - Preview mode is `noindex, nofollow`. Public release mode requires the exact
   approved HTTPS origin and release environment values described in README.
-- Deploy only `Being-Tea-Co-Sites-PWA-Fixed-2026-10-30.tar.gz` when an archive
-  is required. The pre-fix archive is visibly labeled
-  `SUPERSEDED-Being-Tea-Co-Sites-PWA-Pre-PR10-2026-10-30.tar.gz` and is
-  evidence only.
+- Deploy only `Being-Tea-Co-Sites-PWA-Runtime-2026-10-30.tar.gz` when a local
+  archive is required. Its SHA-256 is
+  `ad2224d02ea914e1160f80a83c62bb0fa3a7b1017bf910e4c07b4782f0bbd1d9`.
+  Any package prefixed `SUPERSEDED-` is evidence only and must not be deployed.
 - The current direction is Being Tea Co. brand-only. Public routes and
   downloads must not present a fictional host or persona-network identity.
 - See `docs/release-and-audit-receipt-2026-10-30.md` for exact deployment,
@@ -223,7 +223,9 @@ npm --prefix mobile run android:apk
   OpenAI Sites version 11/source `6f6063b0c503660bf9d34698b0b9b83b0680cac9`/
   deployment `appgdep_6ae46736f4f48191a1c3c416642ef5b5` passed fresh live and
   Chromium checks with zero installability errors. No desktop installation
-  occurred.
+  occurred. The final 213-member runtime-source archive excludes operational
+  handoff documents and obvious personal/secret paths; its SHA-256 is
+  `ad2224d02ea914e1160f80a83c62bb0fa3a7b1017bf910e4c07b4782f0bbd1d9`.
 - 2026-10-30 — PR #7 added the separate review PWA and initially passed the
   build, 15/15 route/content/PWA tests, typecheck, lint, audits, and the first
   live verifier. That verifier did not follow the rendered manifest link, so
