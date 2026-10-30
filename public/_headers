@@ -9,6 +9,6 @@
   Cache-Control: no-cache, must-revalidate
   Content-Type: application/manifest+json; charset=utf-8
 
-/offline.html
+/offline
   Cache-Control: no-cache, must-revalidate
   X-Robots-Tag: noindex, nofollow, noarchive

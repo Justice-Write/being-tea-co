@@ -1,7 +1,7 @@
 const CACHE_PREFIX = "being-tea-preview-";
 const STATIC_CACHE = `${CACHE_PREFIX}assets-v1`;
 const CORE_ASSETS = [
-  "/offline.html",
+  "/offline",
   "/manifest.webmanifest",
   "/favicon.svg",
   "/icons/being-tea-192.png",
@@ -53,7 +53,7 @@ self.addEventListener("fetch", (event) => {
   if (request.mode === "navigate") {
     event.respondWith(
       fetch(request, { cache: "no-store" })
-        .catch(() => caches.match("/offline.html", { ignoreSearch: true })),
+        .catch(() => caches.match("/offline", { ignoreSearch: true })),
     );
     return;
   }
