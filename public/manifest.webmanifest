@@ -1,0 +1,37 @@
+{
+  "id": "/",
+  "name": "Being Tea Co. Preview",
+  "short_name": "Tea Preview",
+  "description": "A review preview for Being Tea Co. tea education, brewing guides, Journal, and free Brew Notes.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fbf9f2",
+  "theme_color": "#0f2a23",
+  "categories": ["education", "lifestyle"],
+  "icons": [
+    {
+      "src": "/icons/being-tea-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/being-tea-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/being-tea-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    { "name": "Learn tea", "url": "/learn" },
+    { "name": "Brewing guides", "url": "/brew" },
+    { "name": "Free Brew Notes", "url": "/downloads/brew-notes.html" }
+  ]
+}

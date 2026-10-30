@@ -1,11 +1,17 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import {
   SITE_DESCRIPTION,
   SITE_IS_PUBLIC,
   SITE_NAME,
   SITE_URL,
 } from "./lib/site";
+import { ServiceWorkerRegistration } from "./components/ServiceWorkerRegistration";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  themeColor: "#0f2a23",
+  colorScheme: "light",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -15,15 +21,24 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
+  manifest: "/manifest.webmanifest",
   authors: [{ name: SITE_NAME, url: SITE_URL }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
   category: "Tea education",
   alternates: { canonical: "/" },
   icons: {
-    icon: "/logo.svg",
-    shortcut: "/logo.svg",
-    apple: "/logo.svg",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icons/being-tea-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    shortcut: "/favicon.svg",
+    apple: "/icons/being-tea-apple-180.png",
+  },
+  appleWebApp: {
+    capable: true,
+    title: "Being Tea Co. Preview",
+    statusBarStyle: "black-translucent",
   },
   robots: {
     index: SITE_IS_PUBLIC,
@@ -71,6 +86,7 @@ export default function RootLayout({
       <body>
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <div id="main-content" tabIndex={-1}>{children}</div>
+        <ServiceWorkerRegistration />
       </body>
     </html>
   );

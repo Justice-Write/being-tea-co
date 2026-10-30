@@ -23,7 +23,10 @@ archives, and machine-specific paths.
 
 ## 1. In progress
 
-- None.
+- 2026-10-30 — Codex: add and validate an installable preview PWA using a
+  network-first navigation policy, a public-assets-only cache, and a static
+  brand-only offline fallback. No phone work, WordPress/DNS change, commerce,
+  personal-data cache, or production replacement.
 
 ## 2. Product map
 

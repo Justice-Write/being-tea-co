@@ -41,6 +41,12 @@ const publishedBlogCount = scheduledBlogs.filter(
   (post) => approvedBlogIds.has(post.id) && post.date <= today && !post.gated,
 ).length;
 
+function pngDimensions(path) {
+  const bytes = readFileSync(new URL(path, import.meta.url));
+  assert.equal(bytes.toString("ascii", 1, 4), "PNG", path);
+  return [bytes.readUInt32BE(16), bytes.readUInt32BE(20)];
+}
+
 async function render(pathname) {
   return worker.fetch(
     new Request(`http://localhost${pathname}`, {
@@ -100,6 +106,67 @@ test("public routes and downloads stay Being Tea Co. brand-only", async () => {
     publicHtml,
     /Akiko|Brother K[aā]ru[nṇ]ya|brother_karunya|Castleborn|AliaSpaces|mypersonas\.online/i,
   );
+});
+
+test("preview PWA is installable without caching pages or personal data", async () => {
+  const home = await htmlFor("/");
+  const webManifest = JSON.parse(
+    readFileSync(new URL("../public/manifest.webmanifest", import.meta.url), "utf8"),
+  );
+  const serviceWorker = readFileSync(
+    new URL("../public/sw.js", import.meta.url),
+    "utf8",
+  );
+  const offline = readFileSync(
+    new URL("../public/offline.html", import.meta.url),
+    "utf8",
+  );
+  const headers = readFileSync(
+    new URL("../public/_headers", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(home, /manifest\.webmanifest/);
+  assert.equal(webManifest.name, "Being Tea Co. Preview");
+  assert.equal(webManifest.id, "/");
+  assert.equal(webManifest.start_url, "/");
+  assert.equal(webManifest.scope, "/");
+  assert.equal(webManifest.display, "standalone");
+  assert.deepEqual(
+    webManifest.icons.map(({ sizes, purpose }) => [sizes, purpose]),
+    [["192x192", "any"], ["512x512", "any"], ["512x512", "maskable"]],
+  );
+  assert.deepEqual(
+    pngDimensions("../public/icons/being-tea-192.png"),
+    [192, 192],
+  );
+  assert.deepEqual(
+    pngDimensions("../public/icons/being-tea-512.png"),
+    [512, 512],
+  );
+  assert.deepEqual(
+    pngDimensions("../public/icons/being-tea-maskable-512.png"),
+    [512, 512],
+  );
+
+  assert.match(serviceWorker, /request\.mode === "navigate"/);
+  assert.match(serviceWorker, /fetch\(request, \{ cache: "no-store" \}\)/);
+  assert.match(serviceWorker, /caches\.match\("\/offline\.html"/);
+  assert.match(serviceWorker, /url\.origin !== self\.location\.origin/);
+  assert.doesNotMatch(serviceWorker, /\/api\/|authorization|cookie|localStorage/i);
+  const assetBoundary = serviceWorker.match(
+    /function isPublicAsset[\s\S]+?self\.addEventListener\("fetch"/,
+  )?.[0] ?? "";
+  assert.match(assetBoundary, /\/assets\//);
+  assert.match(assetBoundary, /\/images\//);
+  assert.doesNotMatch(assetBoundary, /\/journal|\/contact|\/privacy|\/api/);
+
+  assert.match(offline, /Being Tea Co\. Preview/);
+  assert.match(offline, /not stored for offline reading/);
+  assert.match(offline, /noindex,nofollow,noarchive/);
+  assert.doesNotMatch(offline, /Akiko|Brother K[aā]ru[nṇ]ya|Castleborn|AliaSpaces/i);
+  assert.match(headers, /\/sw\.js[\s\S]+Service-Worker-Allowed: \//);
+  assert.match(headers, /\/assets\/\*[\s\S]+immutable/);
 });
 
 test("tea and brew library buttons each reference a unique image", async () => {
