@@ -33,6 +33,11 @@ production signing, store submission, or publication of private material.
   `Being-Tea-Co-Sites-PWA-2026-10-30.tar.gz`, SHA-256
   `b2b5636793ebc27737854f4db4ba241ee2231a8710beef105e0c3ca24b51f7b5`.
 
+Cloudflare is the authoritative PWA-install origin. Its served PWA text assets
+match the release after line-ending normalization. OpenAI Sites preserves the
+exact manifest and service worker but injects its hosting challenge script into
+`offline.html`; that fallback still works and contains no personal data.
+
 Both preview hosts are public only so the candidate can be reviewed. Their
 noindex state is intentional. Neither owns `beingteaco.com`, and neither may
 replace WordPress without route/content/newsletter/redirect/rollback review.

@@ -70,6 +70,9 @@ dependencies and are not part of the current public brand direction.
   checked on 2026-10-30. Both hosts passed manifest, service-worker,
   offline-page, icon, Brew Notes PDF-integrity, brand-only, noindex, and
   35-route checks.
+- Use Cloudflare as the authoritative install origin. OpenAI Sites preserves
+  the manifest and worker but injects its hosting challenge script into
+  `offline.html`; the fallback still works and contains no personal data.
 - The preview PWA uses network-first navigations. Page HTML, APIs, credentials,
   cookies, account information, and personal data are never added to its
   cache. Only public static assets and the honest brand-only offline fallback
