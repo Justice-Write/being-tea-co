@@ -1,5 +1,8 @@
 # Being Tea Co. agent guide
 
+Read `status-handoff.md` first. Record planned work before edits and update the
+handoff, verification evidence, and roadmap in the same commit as the work.
+
 This repository is the public Being Tea Co. project: an independent tea-culture
 education site plus a local-first mobile brewing companion. GitHub is the public
 source of truth. Do not treat missing local prototypes, private image banks, or

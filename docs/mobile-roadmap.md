@@ -1,6 +1,10 @@
 # Mobile roadmap
 
-Status date: 20 September 2026  
+Current checkpoint: 29 October 2026
+
+Read `../status-handoff.md` and `mobile-package-data-boundaries.md`. Native release prep and recovered persistence/lifecycle fixes are integrated; 45 tests and mobile build/smoke pass. Debug 1.0.1/code2 rebuilt, signature/assets verified, installed in place on Samsung and launched to guide. Manual workflow/notices, production signing/store and iOS remain pending. Android unit-test worker was blocked by local JVM loopback; assembly succeeded via offline direct Gradle.
+
+Historical baseline follows (20 September 2026)
 Checkout: public `being-tea-co` cloud workspace. Local phone-test prototypes
 were **not** present and were not accessed.
 
@@ -94,5 +98,7 @@ Remaining: Device-lock/process-death notification verification, iOS build and st
 Portfolio evidence: `mobile-publishing-2026-09-20/design-apks/phone-verification.json`, app build log, and `DESIGN-ROADMAP-STATUS.md`. Older environment limitations above are historical; the phone is now connected.
 
 ## Changelog
+
+- 2026-10-29 — Integrated accepted lifecycle source `5a1056a` and release prep `0508f7e`; made Windows Gradle invocation portable; added test:persistence; disclosed OS backup and export copies; documented package/personal data boundary. 45 JS tests, web build/smoke, APK integrity/signature and in-place phone install/hash pass. See root handoff for exact limits and package receipt.
 
 - 2026-10-16 — Release prep without device or secrets: release signing wired to a git-ignored `keystore.properties` (template added); keystores and signing properties now git-ignored (the lines were commented out before); `npm run android:aab` added; Play checklist updated with keytool, bundle and upload steps; companion privacy route prepared on the site branch `site/companion-privacy-20261016`. brew-core 28/28 pass. Gradle not run here (no Android SDK in this environment). Still human-gated: Doze/lock-screen/process-death notice checks, iOS build on a Mac, keystore creation, Play upload.

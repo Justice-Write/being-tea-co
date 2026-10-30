@@ -34,6 +34,11 @@ export function AboutScreen() {
           pixel, or cloud sync in this build. Export is how you copy your
           journal to another install.
         </p>
+        <p className="quote">
+          Android system backup is allowed and may copy app data according to
+          your device backup settings. Shared exports are separate files you
+          control; deleting an entry here does not delete copies you shared.
+        </p>
         <p className="muted">
           Email beingteaco@gmail.com for a privacy request. Do not send
           passwords or medical records. A public privacy URL for store listing

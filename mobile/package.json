@@ -8,8 +8,9 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1 --port 5174",
     "cap:sync": "npm run build && npx cap sync",
-    "android:apk": "npm run cap:sync && cd android && ./gradlew assembleDebug",
-    "android:aab": "npm run cap:sync && cd android && ./gradlew bundleRelease",
+    "android:apk": "npm run cap:sync && node scripts/android-build.mjs assembleDebug",
+    "android:aab": "npm run cap:sync && node scripts/android-build.mjs bundleRelease",
+    "test:persistence": "node --experimental-strip-types --test tests/persistence-lifecycle.test.cjs",
     "test:smoke": "node tests/smoke.mjs"
   },
   "dependencies": {

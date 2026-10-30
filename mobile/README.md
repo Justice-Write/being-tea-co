@@ -4,7 +4,8 @@ Local-first brewing sessions, an adjustable infusion timer, and a tasting
 journal. Starting points are copied from `app/content/library.ts`. This
 directory does not replace the public storefront.
 
-Phone-test prototypes on founder devices are **not** in this cloud checkout.
+Read the root `status-handoff.md` for the current native release checkpoint.
+The separate portfolio phone-test prototype is not this companion's package.
 
 ## What is implemented
 
@@ -45,8 +46,8 @@ scope.
 Requirements:
 
 - Node.js 22.13+
-- JDK 17 or 21
-- Android SDK platform 35, build-tools, and platform-tools
+- JDK 21
+- Android SDK platform 36, build-tools, and platform-tools
 - `ANDROID_HOME` or `ANDROID_SDK_ROOT` pointing at the SDK
 
 ```bash
@@ -92,11 +93,12 @@ This Linux environment cannot produce an IPA.
 
 ## Signing and user data
 
-Debug APKs use the local debug keystore. A differently signed build is a
-different Android app and will not see the previous local journal. Export
-from the old install, then import into the new one. Side-by-side install is
-possible only if application ids differ; this project keeps
-`co.beingtea.companion`.
+Debug APKs use the local debug keystore. Android refuses an in-place update
+with a different signer for the same application ID. Never uninstall to work
+around this: export the existing journal and agree a migration first. This
+project keeps `co.beingtea.companion` and the existing storage key/origin.
+An APK contains app code and approved guidance, not the user's journal.
+See `../docs/mobile-package-data-boundaries.md` for the complete boundary.
 
 ## Tests
 
@@ -104,6 +106,7 @@ From the repository root:
 
 ```bash
 npm run test:brew-core
+cd mobile && npm run test:persistence
 ```
 
 With the companion preview running (`cd mobile && npm run preview`):
