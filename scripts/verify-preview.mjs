@@ -58,7 +58,20 @@ if (process.argv[2]) {
     receipt.routes.push({ path, status: 200, sha256: file.sha256 });
   }
 
-  const manifestResponse = await fetch(new URL('/manifest.webmanifest', base), {
+  const homeResponse = await fetch(new URL('/', base), {
+    signal: AbortSignal.timeout(30000),
+  });
+  assert.equal(homeResponse.status, 200, '/ manifest discovery');
+  const homeHtml = await homeResponse.text();
+  const manifestLink = homeHtml.match(/<link\b[^>]*\brel="manifest"[^>]*>/i)?.[0] || '';
+  assert.ok(manifestLink, 'home page manifest link');
+  const manifestHref = manifestLink.match(/\bhref="([^"]+)"/i)?.[1] || '';
+  assert.ok(manifestHref, 'home page manifest href');
+  const manifestUrl = new URL(manifestHref, base);
+  assert.equal(manifestUrl.origin, base.origin, 'manifest must be same-origin');
+  assert.equal(manifestUrl.pathname, '/manifest.webmanifest', 'manifest path');
+
+  const manifestResponse = await fetch(manifestUrl, {
     signal: AbortSignal.timeout(30000),
   });
   assert.equal(manifestResponse.status, 200, '/manifest.webmanifest');
@@ -68,7 +81,12 @@ if (process.argv[2]) {
   assert.equal(liveManifest.start_url, '/');
   assert.equal(liveManifest.scope, '/');
   assert.equal(liveManifest.display, 'standalone');
-  receipt.routes.push({ path: '/manifest.webmanifest', status: 200, installMetadata: 'pass' });
+  receipt.routes.push({
+    path: '/manifest.webmanifest',
+    status: 200,
+    linkedFromHome: 'same-origin',
+    installMetadata: 'pass',
+  });
 
   const workerResponse = await fetch(new URL('/sw.js', base), {
     signal: AbortSignal.timeout(30000),

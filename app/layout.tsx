@@ -21,7 +21,6 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
-  manifest: "/manifest.webmanifest",
   authors: [{ name: SITE_NAME, url: SITE_URL }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
@@ -83,6 +82,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="manifest" href="/manifest.webmanifest" />
+      </head>
       <body>
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <div id="main-content" tabIndex={-1}>{children}</div>
