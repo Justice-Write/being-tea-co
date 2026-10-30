@@ -1,18 +1,19 @@
 # Project map and data boundaries
 
-Reconciled 2026-10-29. Read `../status-handoff.md` before work. This document describes software/data boundaries, not permission to publish private records.
+Reconciled 2026-10-30. Read `../status-handoff.md` before work. This document describes software/data boundaries, not permission to publish private records.
 
 ## Associated projects
 
 | Component | Authority / source | Role |
 |---|---|---|
 | Being Tea Co. production | https://beingteaco.com (WordPress.com) | Education, botanical library, newsletter and Projects page |
-| Replacement website | This repository, `codex/roadmap-sites-20260927` | Separate noindex preview; NOT a replacement for WordPress |
-| Being Tea companion | Same repository, `codex/mac-handoff-20260923`; `mobile/` + `packages/brew-core/` | Local sessions, repeat infusions, timer, journal, export/import and local notices |
-| Steep Timer | https://github.com/Justice-Write/Steep-Timer | Separate educational extraction PWA; not the companion |
+| Replacement website | This repository, `main`; Cloudflare and OpenAI Sites preview hosts | Separate public noindex previews; NOT a replacement for WordPress |
+| Being Tea companion | Same repository, `codex/mac-handoff-20260923`; `mobile/` + `packages/brew-core/` | Local sessions, repeat infusions, timer, journal, export/import and local notices; GitHub test prerelease only |
+| Steep Timer | https://github.com/Justice-Write/Steep-Timer and https://justice-write.github.io/Steep-Timer/ | Separate educational extraction PWA; not the companion |
 | Between Steeps | WordPress Projects page | Observation-pack product in redesign; paid offer not approved |
 | Free Brew Notes | `public/downloads/`, generator in `scripts/` | Blank free worksheets and HTML alternative; not a paid product |
 | Portfolio Android test lab | Sibling `mobile-publishing-2026-09-20` | Historical isolated test APK; do not confuse with `co.beingtea.companion` |
+| Legacy editorial snapshot | Separate owner-controlled source archive | Development/history only; never deploy or include its studio/social material in a consumer package |
 
 Other portfolio products and historical persona systems are separate. No
 shared-login migration, persona publication, commerce activation, or
@@ -36,14 +37,21 @@ The companion enables Android OS backup. Device settings can therefore allow jou
 
 ## Computer inventory coverage
 
-Confirmed canonical source, native worktree, separate timer, private-source snapshot, old WordPress export, internal business/roadmap notes, and dated task/recovery folders. Filename searches covered Desktop, Downloads, OneDrive, Documents/ChatGPT, bounded GitHub paths, and selected document/resource locations on additional visible drives. Dependencies were excluded.
+Confirmed canonical source, the separate Sites source copy, native source and
+test package, Steep Timer source/runtime archive, legacy editorial snapshot,
+old WordPress export, internal business/roadmap notes, identity references,
+device-backup evidence, and dated recovery folders. Filename searches covered
+the project workspaces, bounded GitHub/ChatGPT folders, Downloads, Desktop,
+Start Menu, and OneDrive. Dependencies, Git objects, browser profiles,
+credentials, and private file contents were excluded.
 
 This is NOT an exhaustive content scan of every drive: generic filenames, unavailable cloud-only files, browser profile storage, phone-private records, credentials and unsearched archives remain outside coverage. No personal journal export was identified by filename; that does not establish its absence. No private founder image was opened, and no personal records were moved or deleted.
 
 ## Continuation order
 
-1. Use current handoffs and release receipts, not September APK briefing claims.
-2. Verify native device update without downgrade or personal-data loss; complete notification/lock/background acceptance.
-3. Keep WordPress production and reconcile its newer routes/content before proposing any replacement.
-4. Keep per-article approval and specialist review gates; source-checked does not mean approved.
-5. Paid offer, price, refund/markets, merchant connection and delivery remain separate owner decisions.
+1. Use the current root handoff and 2026-10-30 release receipt, not September APK briefing claims.
+2. Keep WordPress production and reconcile its newer routes/content before proposing any replacement.
+3. Complete native manual brewing/export/accessibility and notification/lock/background acceptance without reading or resetting private journals.
+4. Verify Steep Timer installation/offline behavior or explicitly leave it web-only.
+5. Keep per-article approval and specialist review gates; source-checked does not mean approved.
+6. Paid offer, price, refund/markets, merchant connection and delivery remain separate owner decisions.

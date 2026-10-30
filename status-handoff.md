@@ -1,6 +1,6 @@
 # Being Tea Co. public program handoff
 
-**Last updated:** 2026-10-29 by Codex
+**Last updated:** 2026-10-30 by Codex
 
 This is the public-safe entry point for the Being Tea Co. website, companion,
 and Steep Timer. Keep it free of private account mappings, credentials,
@@ -23,9 +23,11 @@ archives, and machine-specific paths.
 
 ## 1. In progress
 
-- 2026-10-29 — Codex: final brand-only website reconciliation, public-history
-  sanitation, WordPress/Sites preview publication, release documentation, and
-  verification. No commerce, DNS cutover, persona publication, or store upload.
+- 2026-10-30 — Codex: reconcile all Being Tea Co. chats/projects, verify GitHub,
+  WordPress, Sites, Android companion, and Steep Timer release state; refresh
+  public-safe data boundaries and cross-model handoff; publish the current
+  brand-only noindex preview. No commerce, DNS cutover, private-data migration,
+  persona publication, production signing, or store upload.
 
 ## 2. Product map
 
@@ -45,8 +47,11 @@ dependencies and are not part of the current public brand direction.
 ### WordPress production
 
 - Production remains WordPress.com site 102864778 at `beingteaco.com`.
-- The October inventory found 79 existing published pages; this release added
-  the Companion parent and privacy child, for 81 known pages. See
+- Live verification on 2026-10-30 returned HTTPS 200, a self-canonical page,
+  an indexable sitemap, and healthy WordPress status. The site has 81 published
+  pages, 14 published posts, and 142 media items.
+- The October inventory found 79 existing published pages; the Companion parent
+  and privacy child brought the known page total to 81. See
   `docs/wordpress-route-reconciliation-2026-10-29.md`.
 - The replacement lacks several WordPress-only sections and must not overwrite
   production.
@@ -55,7 +60,14 @@ dependencies and are not part of the current public brand direction.
 
 ### Replacement website
 
-- Release line: `codex/roadmap-sites-20260927`.
+- GitHub `main` contains the sanitized brand-only candidate; launch merge
+  `dab5f299` has the same source tree as reviewed head `339d19a`.
+- Two public, deliberately noindex previews are live:
+  `https://being-tea-co-preview.christiancodyak.workers.dev` and
+  `https://being-tea-co.chriscodyak.chatgpt.site`.
+- Cloudflare Worker version `42c90481-3ce0-4bec-b226-70916206b3fd` and Sites
+  version 7 were independently checked on 2026-10-30. All 35 sitemap routes on
+  each host returned HTTP 200, remained brand-only, and carried noindex.
 - The site has nine tea families, nine brew methods, trust pages, free Brew
   Notes, and twelve journal drafts.
 - B01-B05 are the only approved candidate articles. B06-B12 remain withheld;
@@ -65,15 +77,20 @@ dependencies and are not part of the current public brand direction.
   approved HTTPS origin and release environment values described in README.
 - The current direction is Being Tea Co. brand-only. Public routes and
   downloads must not present a fictional host or persona-network identity.
+- See `docs/release-and-audit-receipt-2026-10-30.md` for exact deployment,
+  package, and verification receipts.
 
 ### Native companion
 
-- Branch `codex/mac-handoff-20260923` is pushed at `3645b6f`.
+- Branch `codex/mac-handoff-20260923` is pushed at `2eb18f4`; the published
+  Android test prerelease intentionally targets tested source `3645b6f`.
 - Package `co.beingtea.companion`, version 1.0.1 / code 2.
 - 28 brew-core and 17 persistence/lifecycle checks pass.
 - A development-signed debug update was installed in place on the existing
   Android test phone. The signer, package identity, installed APK hash, and
   original install date were preserved; no journal records were read or reset.
+  The on-device APK SHA-256 still exactly matches the GitHub prerelease asset:
+  `33d507183cf67a52dba6c13211172fd3c5c23fa925ad1b4e1e6e96ce32af2e2e`.
 - Still open: manual brewing/export/accessibility checks, notification behavior
   under background/lock/Doze/process death, production keystore/AAB, Play
   internal track, and an iOS build on macOS.
@@ -113,11 +130,11 @@ See `docs/project-map-and-data-boundaries.md` for the package-level map.
 Website:
 
 ```text
-npm ci
-npm test
-npm run typecheck
-npm run lint
-npm audit --omit=dev
+pnpm install --frozen-lockfile
+pnpm test
+pnpm typecheck
+pnpm lint
+pnpm audit --prod
 ```
 
 Preview receipt:
@@ -136,7 +153,8 @@ npm --prefix mobile run android:apk
 
 ## 6. Roadmap order
 
-1. Publish and verify a brand-only noindex preview while WordPress stays live.
+1. **Done:** publish and verify brand-only noindex previews while WordPress
+   stays live.
 2. Reconcile WordPress-only routes, exact content, redirects, newsletter
    behavior, and rollback before any replacement decision.
 3. Obtain article-by-article approval for B06-B12 and the required specialist
@@ -157,6 +175,8 @@ npm --prefix mobile run android:apk
   acceptance, or store readiness.
 - `export-ignore` affects source archives only; it does not hide tracked files
   or Git history.
+- Repository names do not prove repository visibility. Check the provider
+  setting before pushing owner-only editorial material or operational handoffs.
 - Preserve the companion package ID and signing identity. Never uninstall to
   work around a signature mismatch because uninstall removes local app data.
 - GitHub Pages remains disabled for this commercial-capable repository.
