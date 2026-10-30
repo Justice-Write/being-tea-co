@@ -22,6 +22,8 @@ assert.equal(webManifest.display, 'standalone');
 assert.deepEqual(webManifest.icons.map(icon => icon.sizes), ['192x192', '512x512', '512x512']);
 assert.match(serviceWorker, /request\.mode === "navigate"/);
 assert.match(serviceWorker, /fetch\(request, \{ cache: "no-store" \}\)/);
+assert.match(serviceWorker, /caches\.match\(['"]\/offline['"]/);
+assert.doesNotMatch(serviceWorker, /caches\.match\(['"]\/offline\.html['"]/);
 assert.doesNotMatch(serviceWorker, /\/api\/|authorization|cookie|localStorage/i);
 assert.match(offlinePage, /noindex,nofollow,noarchive/);
 const receipt = {
@@ -98,6 +100,8 @@ if (process.argv[2]) {
   assert.ok(workerScope === null || workerScope === '/', '/sw.js scope');
   const liveWorker = await workerResponse.text();
   assert.match(liveWorker, /request\.mode === "navigate"/);
+  assert.match(liveWorker, /caches\.match\(['"]\/offline['"]/);
+  assert.doesNotMatch(liveWorker, /caches\.match\(['"]\/offline\.html['"]/);
   assert.doesNotMatch(liveWorker, /\/api\/|authorization|cookie|localStorage/i);
   receipt.routes.push({
     path: '/sw.js',
@@ -106,15 +110,18 @@ if (process.argv[2]) {
     scope: workerScope || 'default:/' ,
   });
 
-  const offlineResponse = await fetch(new URL('/offline.html', base), {
+  const offlineResponse = await fetch(new URL('/offline', base), {
     signal: AbortSignal.timeout(30000),
+    redirect: 'manual',
   });
-  assert.equal(offlineResponse.status, 200, '/offline.html');
+  assert.equal(offlineResponse.status, 200, '/offline');
+  assert.equal(offlineResponse.redirected, false, '/offline must not redirect');
+  assert.equal(new URL(offlineResponse.url).pathname, '/offline', '/offline canonical path');
   const liveOffline = await offlineResponse.text();
   assert.match(liveOffline, /Being Tea Co\. Preview/);
   assert.match(liveOffline, /not stored for offline reading/);
   assert.match(liveOffline, /noindex,nofollow,noarchive/);
-  receipt.routes.push({ path: '/offline.html', status: 200, honestFallback: 'pass' });
+  receipt.routes.push({ path: '/offline', status: 200, redirectFree: true, honestFallback: 'pass' });
 
   for (const icon of liveManifest.icons) {
     const response = await fetch(new URL(icon.src, base), {

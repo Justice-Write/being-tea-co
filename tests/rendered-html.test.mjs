@@ -154,7 +154,8 @@ test("preview PWA is installable without caching pages or personal data", async 
 
   assert.match(serviceWorker, /request\.mode === "navigate"/);
   assert.match(serviceWorker, /fetch\(request, \{ cache: "no-store" \}\)/);
-  assert.match(serviceWorker, /caches\.match\("\/offline\.html"/);
+  assert.match(serviceWorker, /caches\.match\("\/offline"/);
+  assert.doesNotMatch(serviceWorker, /caches\.match\("\/offline\.html"/);
   assert.match(serviceWorker, /url\.origin !== self\.location\.origin/);
   assert.doesNotMatch(serviceWorker, /\/api\/|authorization|cookie|localStorage/i);
   const assetBoundary = serviceWorker.match(
@@ -170,6 +171,7 @@ test("preview PWA is installable without caching pages or personal data", async 
   assert.doesNotMatch(offline, /Akiko|Brother K[aā]ru[nṇ]ya|Castleborn|AliaSpaces/i);
   assert.match(headers, /\/sw\.js[\s\S]+Service-Worker-Allowed: \//);
   assert.match(headers, /\/assets\/\*[\s\S]+immutable/);
+  assert.match(headers, /\/offline[\s\S]+X-Robots-Tag: noindex, nofollow, noarchive/);
 });
 
 test("tea and brew library buttons each reference a unique image", async () => {
