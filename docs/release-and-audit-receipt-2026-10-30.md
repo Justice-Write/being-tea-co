@@ -13,19 +13,25 @@ production signing, store submission, or publication of private material.
   HTTP 200.
 - Public source is https://github.com/Justice-Write/being-tea-co. Sanitized
   launch PR #3 merged at `dab5f299`; audit PR #4 and dependency-hardening PR
-  #5 brought `main` to `9422500`.
+  #5 closed the dependency findings; PR #6 finalized the public handoff; and
+  PWA PR #7 brought `main` to
+  `8b57a0b43491eb7f836f1ac76b38faa80b5c9092`.
 - Cloudflare preview:
   https://being-tea-co-preview.christiancodyak.workers.dev. Worker version
-  `bc4ce1a5-86d4-4f5a-ba39-385738feab5e` deployed successfully. The preview
-  verifier passed public-path, Brew Notes PDF-integrity, brand-only, noindex,
-  private-route 404, and content checks. A 35-route sitemap sweep returned no
+  `e43ae19c-92c6-4943-b23c-5525dfe25592` deployed successfully. The preview
+  verifier passed manifest, service-worker, offline-page, icon, public-path,
+  Brew Notes PDF-integrity, brand-only, noindex, private-route 404,
+  installability, and content checks. A 35-route sitemap sweep returned no
   failures.
 - OpenAI Sites preview:
-  https://being-tea-co.chriscodyak.chatgpt.site. Sites version 9, source commit
-  `6f28aa8133879e60bb7c9d26860883e7f015c072`, deployment
-  `appgdep_6ae4627058a081919ff7a00ed13b5ea9`, succeeded. A separate live sweep
-  returned HTTP 200 for all 35 sitemap routes; every route remained brand-only
-  and noindex. `robots.txt` disallows the whole preview.
+  https://being-tea-co.chriscodyak.chatgpt.site. Sites version 10, source commit
+  `9650fcd2542fd36aa21cd2060bb926211f6d06d0`, deployment
+  `appgdep_6ae4642bf10081919deb7780817596aa`, succeeded. A separate live PWA
+  verification and sweep returned HTTP 200 for all 35 sitemap routes; every
+  route remained brand-only and noindex. `robots.txt` disallows the whole
+  preview. The packaged source archive is
+  `Being-Tea-Co-Sites-PWA-2026-10-30.tar.gz`, SHA-256
+  `b2b5636793ebc27737854f4db4ba241ee2231a8710beef105e0c3ca24b51f7b5`.
 
 Both preview hosts are public only so the candidate can be reviewed. Their
 noindex state is intentional. Neither owns `beingteaco.com`, and neither may
@@ -34,7 +40,7 @@ replace WordPress without route/content/newsletter/redirect/rollback review.
 ## Source and dependency verification
 
 - Fresh locked install completed with the repository's pnpm lockfile.
-- Build plus 14 rendered-route/content tests passed.
+- Build plus 15 rendered-route/content/PWA tests passed.
 - TypeScript check passed.
 - Lint completed with zero errors and seven existing image-optimization
   warnings.
@@ -44,6 +50,20 @@ replace WordPress without route/content/newsletter/redirect/rollback review.
   [GHSA-2v37-7h3g-55p8](https://github.com/advisories/GHSA-2v37-7h3g-55p8)
   and
   [GHSA-68fv-2mgg-jv7q](https://github.com/advisories/GHSA-68fv-2mgg-jv7q).
+
+## Preview PWA installation
+
+- Live browser installability passed on both preview hosts.
+- The service worker uses network-first navigations and caches only public
+  static assets plus the honest brand-only offline fallback. Page HTML, APIs,
+  authentication, cookies, credentials, account information, and personal data
+  are excluded from the cache.
+- Neither Being Tea Co. Preview nor Steep Timer is installed on Windows. The
+  Being Tea desktop install has not occurred because the final Edge/Windows
+  install action requires action-time owner confirmation.
+- Windows/phone installed-app and physical offline acceptance remain
+  incomplete. This is separate from source publication and from Steep Timer
+  acceptance.
 
 ## Companion package and installation
 
@@ -93,8 +113,10 @@ opened, copied, reset, or seeded during this audit.
    reads.
 3. Complete companion manual/device acceptance, production signing, Play
    internal testing, and an iOS build.
-4. Finish Steep Timer installation/offline acceptance or leave it web-only.
-5. Resolve the visibility or retirement of any legacy editorial repository
+4. Install and physically accept the Being Tea Co. Preview PWA on Windows and
+   phone; the Windows action awaits confirmation.
+5. Finish Steep Timer installation/offline acceptance or leave it web-only.
+6. Resolve the visibility or retirement of any legacy editorial repository
    before pushing owner-only studio material.
-6. Define and test a complete paid-product lifecycle before activating
+7. Define and test a complete paid-product lifecycle before activating
    commerce.

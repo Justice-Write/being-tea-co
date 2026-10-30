@@ -7,12 +7,13 @@ Reconciled October 30, 2026. This supersedes the stale August persona decision q
 - [x] Require explicit approval and the Alaska release date for every journal route and sitemap entry.
 - [x] Keep B01–B05 approved; B06–B12 withheld until individual approval. B10–B12 also require specialist review.
 - [x] Keep unreleased previews noindex and public release hosts explicitly gated.
-- [x] Build and pass 14 rendered-route tests on Windows.
+- [x] Build and pass 15 rendered-route/content/PWA tests on Windows.
 - [x] Source-check every citation in B06–B12 (2026-10-14). All sources exist; 10 required wording edits. Brief: https://claude.ai/code/artifact/8c4549c7-02b8-43de-8a0a-79915a7c0441
 - [ ] Obtain B10 teaware/cultural, B11 cultural/source and B12 health-language practitioner reads (questions listed in the brief).
 - [ ] Obtain exact editorial approval for each remaining draft.
 - [x] Keep WordPress as production and the replacement as a separate noindex preview. A DNS cutover remains a separate future decision after route/content/rollback reconciliation.
-- [x] Publish and verify the sanitized candidate on separate noindex Cloudflare and OpenAI Sites preview hosts.
+- [x] Publish and verify the sanitized candidate as installable noindex previews on separate Cloudflare and OpenAI Sites hosts.
+- [ ] Install and physically accept the preview PWA on Windows and phone, including offline behavior. Windows installation awaits action-time confirmation.
 - [ ] Approve and execute a production replacement release, then verify actual routes, redirects, newsletter behavior, rollback, and metadata.
 - [ ] Complete real provider lifecycle tests before any newsletter, commerce, paid links or account service is represented as active.
 
@@ -26,6 +27,16 @@ for Being Tea Co by the owner on 2026-10-13.
 
 ## Changelog
 
+- 2026-10-30 — PR #7 made both review hosts installable noindex PWAs and
+  brought `main` to `8b57a0b43491eb7f836f1ac76b38faa80b5c9092`. Build,
+  15/15 route/content/PWA tests, and both live PWA verifiers passed. Current
+  receipts are Cloudflare worker `e43ae19c-92c6-4943-b23c-5525dfe25592` and
+  OpenAI Sites version 10, source
+  `9650fcd2542fd36aa21cd2060bb926211f6d06d0`, deployment
+  `appgdep_6ae4642bf10081919deb7780817596aa`. Desktop/phone installation and
+  physical offline acceptance remain pending; no personal data is part of the
+  install package or service-worker cache.
+
 - 2026-10-30 — Merged the sanitized brand-only candidate through PR #3 at
   `dab5f299`; published and independently verified both noindex preview hosts
   across 35 sitemap routes; confirmed WordPress remains healthy production with
@@ -33,7 +44,7 @@ for Being Tea Co by the owner on 2026-10-13.
   the GitHub prerelease; audited the project/package data boundary; and pinned
   affected transitive dependencies through PRs #4 and #5. Clean npm and pnpm
   installs and full audits now pass, and GitHub reports zero open Dependabot
-  alerts. The current noindex previews are Cloudflare worker
+  alerts. The pre-PWA preview checkpoint was Cloudflare worker
   `bc4ce1a5-86d4-4f5a-ba39-385738feab5e` and OpenAI Sites version 9. Steep Timer
   remains live but is not yet installed as a PWA. No DNS, commerce,
   personal-data, production-signing, or store action occurred.
