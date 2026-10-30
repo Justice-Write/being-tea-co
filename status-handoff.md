@@ -23,17 +23,14 @@ archives, and machine-specific paths.
 
 ## 1. In progress
 
-- 2026-10-30 — Codex: add and validate an installable preview PWA using a
-  network-first navigation policy, a public-assets-only cache, and a static
-  brand-only offline fallback. No phone work, WordPress/DNS change, commerce,
-  personal-data cache, or production replacement.
+None.
 
 ## 2. Product map
 
 | Product | Authority | Current role |
 |---|---|---|
 | WordPress website | `https://beingteaco.com` | Production; includes newer Botanical Cup, Herbal, Start Here, newsletter, and Between Steeps material |
-| Replacement website | This release line | Separate noindex preview; not approved to replace WordPress |
+| Replacement website | This release line | Separate installable noindex preview; not approved to replace WordPress |
 | Being Tea companion | `codex/mac-handoff-20260923` | Local-first Android/iOS source for sessions, repeat infusions, timer, journal, export/import, and local notices |
 | Steep Timer | `https://github.com/Justice-Write/Steep-Timer` | Separate installable educational PWA |
 | Free Brew Notes | `public/downloads/` | Free brand-only HTML and PDF observation sheets |
@@ -61,13 +58,26 @@ dependencies and are not part of the current public brand direction.
 
 - GitHub `main` contains the sanitized brand-only candidate. Launch merge
   `dab5f299` has the same source tree as reviewed head `339d19a`; audit PR #4
-  and dependency-hardening PR #5 brought `main` to `9422500`.
+  and dependency-hardening PR #5 closed the dependency findings; PR #6
+  finalized the public handoff; and PWA PR #7 brought `main` to
+  `8b57a0b43491eb7f836f1ac76b38faa80b5c9092`.
 - Two public, deliberately noindex previews are live:
   `https://being-tea-co-preview.christiancodyak.workers.dev` and
   `https://being-tea-co.chriscodyak.chatgpt.site`.
-- Cloudflare Worker version `bc4ce1a5-86d4-4f5a-ba39-385738feab5e` and Sites
-  version 9 were independently checked on 2026-10-30. All 35 sitemap routes on
-  each host returned HTTP 200, remained brand-only, and carried noindex.
+- Cloudflare Worker version `e43ae19c-92c6-4943-b23c-5525dfe25592` and OpenAI
+  Sites version 10, source `9650fcd2542fd36aa21cd2060bb926211f6d06d0`,
+  deployment `appgdep_6ae4642bf10081919deb7780817596aa`, were independently
+  checked on 2026-10-30. Both hosts passed manifest, service-worker,
+  offline-page, icon, Brew Notes PDF-integrity, brand-only, noindex, and
+  35-route checks.
+- The preview PWA uses network-first navigations. Page HTML, APIs, credentials,
+  cookies, account information, and personal data are never added to its
+  cache. Only public static assets and the honest brand-only offline fallback
+  are cacheable.
+- Browser installability is verified on both preview hosts. Windows and phone
+  installed-app status plus physical offline acceptance remain incomplete.
+  Neither Being Tea Co. Preview nor Steep Timer is installed on Windows; the
+  final Edge/Windows install action requires action-time owner confirmation.
 - The site has nine tea families, nine brew methods, trust pages, free Brew
   Notes, and twelve journal drafts.
 - B01-B05 are the only approved candidate articles. B06-B12 remain withheld;
@@ -109,6 +119,10 @@ dependencies and are not part of the current public brand direction.
 Release packages may contain reviewed public source/content/assets, required
 compiled runtime resources, blank Brew Notes, and explicitly labeled synthetic
 test fixtures.
+
+The replacement preview service worker may cache only public static assets and
+its static offline fallback. It must not cache page HTML, APIs, authentication,
+cookies, credentials, account records, or personal data.
 
 Keep these outside public source and consumer packages:
 
@@ -155,15 +169,18 @@ npm --prefix mobile run android:apk
 
 1. **Done:** publish and verify brand-only noindex previews while WordPress
    stays live.
-2. Reconcile WordPress-only routes, exact content, redirects, newsletter
+2. Install and physically accept the Being Tea Co. Preview PWA on Windows and
+   phone, including honest offline behavior. This is separate from Steep Timer
+   acceptance; the Windows installation awaits action-time confirmation.
+3. Reconcile WordPress-only routes, exact content, redirects, newsletter
    behavior, and rollback before any replacement decision.
-3. Obtain article-by-article approval for B06-B12 and the required specialist
+4. Obtain article-by-article approval for B06-B12 and the required specialist
    reads; assign new future dates only after approval.
-4. Complete companion manual/device acceptance, production signing, store
+5. Complete companion manual/device acceptance, production signing, store
    materials, and iOS compilation without bundling personal data.
-5. Verify Steep Timer installation/offline behavior or decide whether it stays
+6. Verify Steep Timer installation/offline behavior or decide whether it stays
    standalone.
-6. Treat any paid offer as a separate owner-approved lifecycle covering exact
+7. Treat any paid offer as a separate owner-approved lifecycle covering exact
    product, proof, price, seller/support/refund terms, markets, payment, tax,
    fulfillment, and delivery.
 
@@ -183,6 +200,15 @@ npm --prefix mobile run android:apk
 
 ## 8. Work log
 
+- 2026-10-30 — PR #7 made the separate review site an installable noindex PWA
+  and brought `main` to `8b57a0b43491eb7f836f1ac76b38faa80b5c9092`.
+  Build, 15/15 route/content/PWA tests, typecheck, lint, audits, and both live
+  PWA verifiers passed. Current receipts are Cloudflare worker
+  `e43ae19c-92c6-4943-b23c-5525dfe25592` and OpenAI Sites version 10, source
+  `9650fcd2542fd36aa21cd2060bb926211f6d06d0`, deployment
+  `appgdep_6ae4642bf10081919deb7780817596aa`. Windows/phone installation and
+  physical offline acceptance remain pending; the Windows install requires
+  action-time confirmation.
 - 2026-10-30 — Reconciled the associated chats, products, repositories,
   deployments, packages, installations, and personal-data boundaries. PR #4
   added the public-safe audit/handoff and initial production dependency pins;
