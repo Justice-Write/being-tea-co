@@ -31,10 +31,12 @@ for Being Tea Co by the owner on 2026-10-13.
   across 35 sitemap routes; confirmed WordPress remains healthy production with
   81 pages and 14 posts; reverified the connected phone's companion APK against
   the GitHub prerelease; audited the project/package data boundary; and pinned
-  patched transitive `nanoid` and `source-map-js` versions after two new
-  production dependency advisories were detected. Steep Timer remains live but is
-  not yet installed as a PWA. No DNS, commerce, personal-data, production
-  signing, or store action occurred.
+  affected transitive dependencies through PRs #4 and #5. Clean npm and pnpm
+  installs and full audits now pass, and GitHub reports zero open Dependabot
+  alerts. The current noindex previews are Cloudflare worker
+  `bc4ce1a5-86d4-4f5a-ba39-385738feab5e` and OpenAI Sites version 9. Steep Timer
+  remains live but is not yet installed as a PWA. No DNS, commerce,
+  personal-data, production-signing, or store action occurred.
 
 - 2026-10-29 — Owner confirmed WordPress production plus a separate preview and reaffirmed brand-only presentation. Reconciled the initial 79 published pages and 14 posts; replaced the one persona-framed Projects block without disturbing its 19 siblings; added published Companion and Companion Privacy pages; upgraded Next/React/RSC/Vite; tightened the brand-only route test; rebuilt the brand-only Brew Notes; and documented project/data boundaries. Native branch 3645b6f was pushed and its same-signature debug APK installed in place. Steep Timer 7bb93c1 was pushed and deployed. Website publication and public-history sanitation are the remaining work in this release pass.
 

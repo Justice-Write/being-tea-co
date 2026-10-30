@@ -23,11 +23,7 @@ archives, and machine-specific paths.
 
 ## 1. In progress
 
-- 2026-10-30 — Codex: reconcile all Being Tea Co. chats/projects, verify GitHub,
-  WordPress, Sites, Android companion, and Steep Timer release state; refresh
-  public-safe data boundaries and cross-model handoff; publish the current
-  brand-only noindex preview. No commerce, DNS cutover, private-data migration,
-  persona publication, production signing, or store upload.
+- None.
 
 ## 2. Product map
 
@@ -60,13 +56,14 @@ dependencies and are not part of the current public brand direction.
 
 ### Replacement website
 
-- GitHub `main` contains the sanitized brand-only candidate; launch merge
-  `dab5f299` has the same source tree as reviewed head `339d19a`.
+- GitHub `main` contains the sanitized brand-only candidate. Launch merge
+  `dab5f299` has the same source tree as reviewed head `339d19a`; audit PR #4
+  and dependency-hardening PR #5 brought `main` to `9422500`.
 - Two public, deliberately noindex previews are live:
   `https://being-tea-co-preview.christiancodyak.workers.dev` and
   `https://being-tea-co.chriscodyak.chatgpt.site`.
-- Cloudflare Worker version `42c90481-3ce0-4bec-b226-70916206b3fd` and Sites
-  version 7 were independently checked on 2026-10-30. All 35 sitemap routes on
+- Cloudflare Worker version `bc4ce1a5-86d4-4f5a-ba39-385738feab5e` and Sites
+  version 9 were independently checked on 2026-10-30. All 35 sitemap routes on
   each host returned HTTP 200, remained brand-only, and carried noindex.
 - The site has nine tea families, nine brew methods, trust pages, free Brew
   Notes, and twelve journal drafts.
@@ -183,6 +180,18 @@ npm --prefix mobile run android:apk
 
 ## 8. Work log
 
+- 2026-10-30 — Reconciled the associated chats, products, repositories,
+  deployments, packages, installations, and personal-data boundaries. PR #4
+  added the public-safe audit/handoff and initial production dependency pins;
+  PR #5 closed the provider's remaining development dependency alerts. Clean
+  npm and pnpm installs, full audits, build, 14/14 tests, typecheck, lint, a
+  Drizzle generation check, and an Open Graph render passed. Cloudflare worker
+  `bc4ce1a5-86d4-4f5a-ba39-385738feab5e` and OpenAI Sites version 9 then passed
+  separate 35-route noindex/brand checks. WordPress remains production; the
+  Android package remains a debug test release; Steep Timer PWA installation,
+  companion physical acceptance, legacy editorial-repository disposition,
+  production replacement, commerce, signing, and store publication remain
+  open or owner-gated.
 - 2026-10-29 — Native companion branch pushed at `3645b6f`; tests passed and a
   same-signature debug update was installed in place. Manual and production
   release acceptance remain open.

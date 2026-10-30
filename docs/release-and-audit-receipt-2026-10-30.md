@@ -12,18 +12,18 @@ production signing, store submission, or publication of private material.
   healthy site status. The Companion and Companion Privacy pages both return
   HTTP 200.
 - Public source is https://github.com/Justice-Write/being-tea-co. Sanitized
-  launch PR #3 merged to `main` at `dab5f299`; its tree matches reviewed
-  head `339d19a`.
+  launch PR #3 merged at `dab5f299`; audit PR #4 and dependency-hardening PR
+  #5 brought `main` to `9422500`.
 - Cloudflare preview:
   https://being-tea-co-preview.christiancodyak.workers.dev. Worker version
-  `42c90481-3ce0-4bec-b226-70916206b3fd` deployed successfully. The preview
+  `bc4ce1a5-86d4-4f5a-ba39-385738feab5e` deployed successfully. The preview
   verifier passed public-path, Brew Notes PDF-integrity, brand-only, noindex,
   private-route 404, and content checks. A 35-route sitemap sweep returned no
   failures.
 - OpenAI Sites preview:
-  https://being-tea-co.chriscodyak.chatgpt.site. Sites version 7, source commit
-  `f69a28eabcc1249080652ec012f6cde8f67336fd`, deployment
-  `appgdep_6ae454f369888191884eb71710a7b218`, succeeded. A separate live sweep
+  https://being-tea-co.chriscodyak.chatgpt.site. Sites version 9, source commit
+  `6f28aa8133879e60bb7c9d26860883e7f015c072`, deployment
+  `appgdep_6ae4627058a081919ff7a00ed13b5ea9`, succeeded. A separate live sweep
   returned HTTP 200 for all 35 sitemap routes; every route remained brand-only
   and noindex. `robots.txt` disallows the whole preview.
 
@@ -38,8 +38,9 @@ replace WordPress without route/content/newsletter/redirect/rollback review.
 - TypeScript check passed.
 - Lint completed with zero errors and seven existing image-optimization
   warnings.
-- `pnpm audit --prod` reported no known vulnerabilities after pinning
-  `nanoid` 3.3.20 and `source-map-js` 1.2.2. The pins address
+- Full npm and pnpm audits reported no known vulnerabilities after pinning the
+  affected transitive production and development dependencies. GitHub then
+  returned zero open Dependabot alerts. The initial production pins address
   [GHSA-2v37-7h3g-55p8](https://github.com/advisories/GHSA-2v37-7h3g-55p8)
   and
   [GHSA-68fv-2mgg-jv7q](https://github.com/advisories/GHSA-68fv-2mgg-jv7q).
