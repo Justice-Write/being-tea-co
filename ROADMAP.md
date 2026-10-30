@@ -14,7 +14,8 @@ Reconciled October 30, 2026. This supersedes the stale August persona decision q
 - [x] Keep WordPress as production and the replacement as a separate noindex preview. A DNS cutover remains a separate future decision after route/content/rollback reconciliation.
 - [x] Document the route, content, metadata, navigation, newsletter, redirect, personal-data, and rollback gaps that must be closed before any replacement decision.
 - [x] Publish and verify the sanitized candidate as installable noindex previews on separate Cloudflare and OpenAI Sites hosts.
-- [ ] Install and physically accept the preview PWA on Windows and phone, including offline behavior. Windows installation awaits action-time confirmation.
+- [x] Install and launch Being Tea Co. Preview and Steep Timer on Windows; verify StartApps/AppX registration and isolated-profile offline navigation.
+- [ ] Complete phone installation and installed-profile physical offline, update, background, and uninstall acceptance.
 - [ ] Approve and execute a production replacement release, then verify actual routes, redirects, newsletter behavior, rollback, and metadata.
 - [ ] Complete real provider lifecycle tests before any newsletter, commerce, paid links or account service is represented as active.
 
@@ -28,6 +29,19 @@ for Being Tea Co by the owner on 2026-10-13.
 
 ## Changelog
 
+- 2026-10-30 — Genuine manifest-derived Edge installs launched Being Tea Co.
+  Preview and Steep Timer as standalone Windows apps; StartApps and AppX
+  readback confirmed both registrations at version 1.0.0.0/status `Ok`.
+  Optional pins, desktop shortcuts, and auto-start were declined. The first
+  isolated offline run found that hosted `/offline.html` redirected to
+  `/offline`, making the cached response invalid for navigation. PR #13 moved
+  the worker cache/fallback to redirect-free `/offline` and strengthened the
+  live verifier. Cloudflare worker `f26a1111-72c4-488f-a853-cd7794f8d453` and
+  OpenAI Sites version 12/source `cc80192f0929031ac6e99e8363a2090a71bda5e5`/
+  deployment `appgdep_6ae4c38dff008191bce549cd31e43e9d` now pass live checks;
+  both preview hosts and Steep Timer pass isolated offline navigation. Phone
+  and installed-profile physical acceptance remain open.
+
 - 2026-10-30 — Fresh Chrome found that `metadataBase` had converted the
   manifest link to
   `https://preview.beingteaco.invalid/manifest.webmanifest`. The original
@@ -39,8 +53,8 @@ for Being Tea Co by the owner on 2026-10-13.
   `56ae09fc-81d6-4642-bc02-e9f4dc1dddd4` and OpenAI Sites version 11, source
   `6f6063b0c503660bf9d34698b0b9b83b0680cac9`, deployment
   `appgdep_6ae46736f4f48191a1c3c416642ef5b5`, pass fresh live and Chromium
-  checks with zero installability errors and one active worker. Desktop/phone
-  installation and physical acceptance remain separate and pending; no
+  checks with zero installability errors and one active worker. At that
+  checkpoint desktop/phone installation and physical acceptance were pending; no
   personal data is part of the install package or service-worker cache.
 
 - 2026-10-30 — PR #7 added the installable noindex PWA surface and initially
@@ -57,7 +71,7 @@ for Being Tea Co by the owner on 2026-10-13.
   installs and full audits now pass, and GitHub reports zero open Dependabot
   alerts. The pre-PWA preview checkpoint was Cloudflare worker
   `bc4ce1a5-86d4-4f5a-ba39-385738feab5e` and OpenAI Sites version 9. Steep Timer
-  remains live but is not yet installed as a PWA. No DNS, commerce,
+  was live but not yet installed as a PWA at that checkpoint. No DNS, commerce,
   personal-data, production-signing, or store action occurred.
 
 - 2026-10-29 — Owner confirmed WordPress production plus a separate preview and reaffirmed brand-only presentation. Reconciled the initial 79 published pages and 14 posts; replaced the one persona-framed Projects block without disturbing its 19 siblings; added published Companion and Companion Privacy pages; upgraded Next/React/RSC/Vite; tightened the brand-only route test; rebuilt the brand-only Brew Notes; and documented project/data boundaries. Native branch 3645b6f was pushed and its same-signature debug APK installed in place. Steep Timer 7bb93c1 was pushed and deployed. Website publication and public-history sanitation are the remaining work in this release pass.
