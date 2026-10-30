@@ -1,0 +1,28 @@
+{
+  "scope": "Actual local vinext dev server; no mocks or external provider calls",
+  "results": [
+    {
+      "path": "/downloads/being-tea-brew-notes-a4.pdf",
+      "status": 200,
+      "contentType": "application/pdf",
+      "bytes": 3112,
+      "hashMatchesManifest": true
+    },
+    {
+      "path": "/downloads/being-tea-brew-notes-letter.pdf",
+      "status": 200,
+      "contentType": "application/pdf",
+      "bytes": 3058,
+      "hashMatchesManifest": true
+    },
+    {
+      "path": "/downloads/brew-notes.html",
+      "status": 200,
+      "pdfLinksPresent": true,
+      "noindex": true,
+      "accessibilityLimitationsDisclosed": true
+    }
+  ],
+  "paidCheckout": "unconfigured and untested",
+  "physicalPrint": "unrun"
+}

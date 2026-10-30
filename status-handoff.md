@@ -27,7 +27,7 @@ Any LLM or person working in this repo follows these rules. No exceptions for "s
 
 ## 1. In progress
 
-- *(nothing in progress)*
+- **2026-10-29 — Codex (GPT-6):** Owner-authorized project reconciliation, related-task/data inventory, roadmap continuation, documentation, Git publication and supported packaging/install verification. Touching this handoff, roadmap/docs and reviewed app/site files as needed; inspect associated timer/native handoffs before work there. Preserve personal data and newer WordPress content.
 
 ---
 

@@ -57,6 +57,24 @@ export default function ShopPage() {
         </div>
       </section>
 
+      <section className="commerce-method" aria-labelledby="akiko-guidance">
+        <div>
+          <p className="section-kicker">An Akiko-inspired perspective</p>
+          <h2 id="akiko-guidance">Begin with what you have.</h2>
+          <p>Akiko is a fictional editorial persona. These suggestions draw on her
+            serene, precise voice; they are not her lived experience, product
+            testing, or professional credentials.</p>
+          <p><a href="/downloads/brew-notes.html">Open the free printable brew log</a></p>
+          <p>No purchase, email address, or account required. Use your browser’s
+            Print command to print it or save a PDF.</p>
+        </div>
+        <ol>
+          <li><span>01</span><div><strong>Precision</strong><p>Record leaf amount, water volume, temperature and time. Change one variable on the next brew and compare your own notes.</p></div></li>
+          <li><span>02</span><div><strong>Hospitality</strong><p>Start with a cup and tools you already have. Choose equipment for a specific brewing need, comfortable handling and easy cleaning. An expensive collection is not a prerequisite.</p></div></li>
+          <li><span>03</span><div><strong>Discernment</strong><p>Before buying tea, ask what the seller documents about maker, origin, harvest, processing and storage. Mark unknowns. Separate seller descriptions from your own tasting; a higher price alone does not establish quality.</p></div></li>
+        </ol>
+      </section>
+
       <section className="commerce-method">
         <div>
           <p className="section-kicker">Publication standard</p>

@@ -21,6 +21,12 @@ See `ROADMAP-EXECUTION-2026-09-27.md`. No default-branch merge has occurred. The
 
 ## Changelog
 
+- 2026-10-27 - Existing free brew log now has local A4/Letter one-page PDF proofs, HTML links, generator, integrity manifest and readiness report. Visual render, actual local asset delivery/MIME/hash checks, build+13/13 tests and typecheck pass. No publishing, product/price/provider decisions or account/financial changes. Physical print and paid lifecycle still unrun.
+
+
+- 2026-10-24 — Confirmed production WordPress is newer than repository and must be preserved. Published Akiko-inspired guidance/free brew prompts on live Projects page; all original blocks preserved, public HTTP + 390px mobile pass. Local matching guidance/disclosure/printable edits pass 13/13 tests and typecheck. Paid launch is blocked by unconnected Stripe, no approved offer/price and no verified digital/physical fulfillment. No push or Cloudflare replacement deployment. See status-handoff.md.
+
+
 - 2026-10-16 — Branches ready for owner review (all local, not pushed):
   - `integration/preview-20261016` (d805707) = release + the three branches below. Clean install, `npm test` 14/14, typecheck, release-guard check and `wrangler deploy --dry-run` (334 KiB gzip, no bindings) all pass. Deploy the preview from this branch.
   - `review/journal-b06-b12-20261016` (ad3e02e): B06–B12 source-check edits + Monday dates; 13/13.
