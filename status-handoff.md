@@ -47,6 +47,8 @@ This handoff is now tracked on the native branch under the owner's standing prot
 
 ## 4. Current state (2026-10-29)
 
+- GitHub testing prerelease published: https://github.com/Justice-Write/being-tea-co/releases/tag/android-test-2026-10-29, source target `3645b6f`. Coordinator verified the uploaded APK digest matches the installed/local SHA below. See `docs/android-test-release-2026-10-29.md`. This is not a store release.
+
 - Native line integrates release prep `0508f7e` and the recovered accepted lifecycle candidate `5a1056a` via merge `6e92a1b`. The earlier handoff missed the October lifecycle work.
 - Fresh 28 brew-core + 17 actual adapter/listener regressions pass; TypeScript/mobile production build and unchanged 390px browser smoke pass.
 - Android debug APK built via existing offline JDK21/Gradle8.11.1 environment. Package `co.beingtea.companion`, version 1.0.1/code 2, target API36. SHA256 `33d507183cf67a52dba6c13211172fd3c5c23fa925ad1b4e1e6e96ce32af2e2e`; 4,333,161 bytes. Signature matches installed signer; ZIP CRC and all 12 native public assets match.
@@ -76,9 +78,11 @@ This handoff is now tracked on the native branch under the owner's standing prot
 
 ## 8. In progress (claim here BEFORE starting; remove when done)
 
-- None.
+- 2026-10-29 — Codex GPT-6: record coordinator-published GitHub prerelease and verified asset digest in native handoff and release receipt; documentation only.
 
 ## 9. Work log (newest first)
+
+- **2026-10-29 � Codex GPT-6, documentation follow-up:** recorded the coordinator-published Android testing prerelease, target `3645b6f`, and reported GitHub APK digest verification in the root handoff and release receipt. Documentation-only change; prior binary/install evidence unchanged. No rebuild, website modification, or additional device-data access.
 
 - **2026-10-29 — Codex GPT-6:** Integrated recovered lifecycle candidate and existing release-prep into canonical native line, fixed Windows Gradle task invocation, added persistence test script, corrected OS backup/export disclosures, documented install-vs-personal data boundaries, and tracked this handoff. Fresh 45 tests + mobile build/smoke pass. Debug APK signature/CRC/asset parity verified; same-ID/same-signer in-place phone install and installed hash verified; launch reaches GuideActivity. No private records read or reset. Native test worker blocked by host loopback; offline assembly succeeded. Production signing/store/iOS/manual device acceptance remain open. Package SHA and evidence locations in §4. This entry is committed with the changes; remote verification is reported by the coordinating task.
 
