@@ -12,6 +12,7 @@ Reconciled October 30, 2026. This supersedes the stale August persona decision q
 - [ ] Obtain B10 teaware/cultural, B11 cultural/source and B12 health-language practitioner reads (questions listed in the brief).
 - [ ] Obtain exact editorial approval for each remaining draft.
 - [x] Keep WordPress as production and the replacement as a separate noindex preview. A DNS cutover remains a separate future decision after route/content/rollback reconciliation.
+- [x] Document the route, content, metadata, navigation, newsletter, redirect, personal-data, and rollback gaps that must be closed before any replacement decision.
 - [x] Publish and verify the sanitized candidate as installable noindex previews on separate Cloudflare and OpenAI Sites hosts.
 - [ ] Install and physically accept the preview PWA on Windows and phone, including offline behavior. Windows installation awaits action-time confirmation.
 - [ ] Approve and execute a production replacement release, then verify actual routes, redirects, newsletter behavior, rollback, and metadata.
@@ -27,15 +28,25 @@ for Being Tea Co by the owner on 2026-10-13.
 
 ## Changelog
 
-- 2026-10-30 — PR #7 made both review hosts installable noindex PWAs and
-  brought `main` to `8b57a0b43491eb7f836f1ac76b38faa80b5c9092`. Build,
-  15/15 route/content/PWA tests, and both live PWA verifiers passed. Current
-  receipts are Cloudflare worker `e43ae19c-92c6-4943-b23c-5525dfe25592` and
-  OpenAI Sites version 10, source
-  `9650fcd2542fd36aa21cd2060bb926211f6d06d0`, deployment
-  `appgdep_6ae4642bf10081919deb7780817596aa`. Desktop/phone installation and
-  physical offline acceptance remain pending; no personal data is part of the
-  install package or service-worker cache.
+- 2026-10-30 — Fresh Chrome found that `metadataBase` had converted the
+  manifest link to
+  `https://preview.beingteaco.invalid/manifest.webmanifest`. The original
+  verifier only tested a hardcoded same-host path, and the earlier Edge dialog
+  was a generic wrapper rather than PWA-installability evidence. PR #10 fixed
+  the page to use a relative same-origin manifest link and strengthened both
+  rendered and live checks, bringing `main` to
+  `e5d699d8aa19c05a5568f12d4b4f95b1c8a2745e`. Corrected Cloudflare worker
+  `56ae09fc-81d6-4642-bc02-e9f4dc1dddd4` and OpenAI Sites version 11, source
+  `6f6063b0c503660bf9d34698b0b9b83b0680cac9`, deployment
+  `appgdep_6ae46736f4f48191a1c3c416642ef5b5`, pass fresh live and Chromium
+  checks with zero installability errors and one active worker. Desktop/phone
+  installation and physical acceptance remain separate and pending; no
+  personal data is part of the install package or service-worker cache.
+
+- 2026-10-30 — PR #7 added the installable noindex PWA surface and initially
+  passed 15/15 route/content/PWA tests plus the first live verifier. Its
+  installability conclusion was later invalidated by the fresh-browser finding
+  above and is superseded by PR #10 and the corrected deployment receipts.
 
 - 2026-10-30 — Merged the sanitized brand-only candidate through PR #3 at
   `dab5f299`; published and independently verified both noindex preview hosts

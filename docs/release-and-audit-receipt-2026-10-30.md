@@ -13,25 +13,32 @@ production signing, store submission, or publication of private material.
   HTTP 200.
 - Public source is https://github.com/Justice-Write/being-tea-co. Sanitized
   launch PR #3 merged at `dab5f299`; audit PR #4 and dependency-hardening PR
-  #5 closed the dependency findings; PR #6 finalized the public handoff; and
-  PWA PR #7 brought `main` to
-  `8b57a0b43491eb7f836f1ac76b38faa80b5c9092`.
+  #5 closed the dependency findings; PR #6 finalized the public handoff; PR #7
+  added the preview PWA; PRs #8-#9 finalized its public-safe receipt and host
+  boundary; and PR #10 corrected manifest discovery. The corrected source
+  checkpoint is `e5d699d8aa19c05a5568f12d4b4f95b1c8a2745e`.
 - Cloudflare preview:
   https://being-tea-co-preview.christiancodyak.workers.dev. Worker version
-  `e43ae19c-92c6-4943-b23c-5525dfe25592` deployed successfully. The preview
-  verifier passed manifest, service-worker, offline-page, icon, public-path,
-  Brew Notes PDF-integrity, brand-only, noindex, private-route 404,
-  installability, and content checks. A 35-route sitemap sweep returned no
-  failures.
+  `56ae09fc-81d6-4642-bc02-e9f4dc1dddd4` deployed successfully. The corrected
+  verifier discovers the manifest from rendered HTML, requires a same-origin
+  link, and passed service-worker, offline-page, icon, public-path, Brew Notes
+  PDF-integrity, brand-only, noindex, private-route 404, and content checks.
+  Fresh Chrome returned zero installability errors and one active worker. An
+  independent sweep returned 35/35 routes at HTTP 200, all with `noindex,
+  nofollow`, zero private/persona marker hits, and a disallow-all robots file.
 - OpenAI Sites preview:
-  https://being-tea-co.chriscodyak.chatgpt.site. Sites version 10, source commit
-  `9650fcd2542fd36aa21cd2060bb926211f6d06d0`, deployment
-  `appgdep_6ae4642bf10081919deb7780817596aa`, succeeded. A separate live PWA
-  verification and sweep returned HTTP 200 for all 35 sitemap routes; every
-  route remained brand-only and noindex. `robots.txt` disallows the whole
-  preview. The packaged source archive is
-  `Being-Tea-Co-Sites-PWA-2026-10-30.tar.gz`, SHA-256
-  `b2b5636793ebc27737854f4db4ba241ee2231a8710beef105e0c3ca24b51f7b5`.
+  https://being-tea-co.chriscodyak.chatgpt.site. Sites version 11, source commit
+  `6f6063b0c503660bf9d34698b0b9b83b0680cac9`, deployment
+  `appgdep_6ae46736f4f48191a1c3c416642ef5b5`, succeeded. The corrected live PWA
+  verifier passed; fresh Chrome returned zero installability errors and one
+  active worker; and an independent 35-route sweep returned all routes at HTTP
+  200 with `noindex, nofollow`, zero private/persona marker hits, and a
+  disallow-all robots file. The packaged source archive is
+  `Being-Tea-Co-Sites-PWA-Fixed-2026-10-30.tar.gz`, SHA-256
+  `53123e04e4cf7f4699715d4bda4ac0bb8b2241254e05206567592e245663dc51`.
+  The earlier archive was relabeled
+  `SUPERSEDED-Being-Tea-Co-Sites-PWA-Pre-PR10-2026-10-30.tar.gz`; it is
+  preserved only as superseded evidence and must not be deployed.
 
 Cloudflare is the authoritative PWA-install origin. Its served PWA text assets
 match the release after line-ending normalization. OpenAI Sites preserves the
@@ -58,7 +65,13 @@ replace WordPress without route/content/newsletter/redirect/rollback review.
 
 ## Preview PWA installation
 
-- Live browser installability passed on both preview hosts.
+- The earlier installability receipt was invalidated by a fresh Chrome check:
+  the rendered manifest link resolved to the placeholder `.invalid` origin.
+  PR #10 corrected it to a same-origin relative link and strengthened the
+  tests. Fresh Chromium checks of both corrected hosts return zero
+  installability errors with one active worker.
+- The earlier generic Edge wrapper prompt was dismissed. It was not PWA proof,
+  and no desktop app was installed.
 - The service worker uses network-first navigations and caches only public
   static assets plus the honest brand-only offline fallback. Page HTML, APIs,
   authentication, cookies, credentials, account information, and personal data
