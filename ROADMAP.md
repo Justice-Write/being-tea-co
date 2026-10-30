@@ -1,6 +1,6 @@
 # Being Tea Co replacement-candidate roadmap
 
-Reconciled September 27, 2026. This supersedes the stale August persona decision queue.
+Reconciled October 30, 2026. This supersedes the stale August persona decision queue.
 
 - [x] Integrate the preserved journal checkpoint and September 24 review branch locally.
 - [x] Keep the site brand-only, as directed by the owner in the newer internal roadmap.
@@ -12,14 +12,29 @@ Reconciled September 27, 2026. This supersedes the stale August persona decision
 - [ ] Obtain B10 teaware/cultural, B11 cultural/source and B12 health-language practitioner reads (questions listed in the brief).
 - [ ] Obtain exact editorial approval for each remaining draft.
 - [x] Keep WordPress as production and the replacement as a separate noindex preview. A DNS cutover remains a separate future decision after route/content/rollback reconciliation.
-- [ ] Approve and execute a separate public release, then verify actual routes and metadata.
+- [x] Publish and verify the sanitized candidate on separate noindex Cloudflare and OpenAI Sites preview hosts.
+- [ ] Approve and execute a production replacement release, then verify actual routes, redirects, newsletter behavior, rollback, and metadata.
 - [ ] Complete real provider lifecycle tests before any newsletter, commerce, paid links or account service is represented as active.
 
 The private legacy source is a separate snapshot, not the release candidate. Persona accounts are not changed by this work. The private founder reference remains private.
 
-See `ROADMAP-EXECUTION-2026-09-27.md`. No default-branch merge has occurred. The portfolio installation hold was lifted for Being Tea Co by the owner on 2026-10-13.
+See `ROADMAP-EXECUTION-2026-09-27.md` for the earlier integration history and
+`docs/release-and-audit-receipt-2026-10-30.md` for the current verified
+release state. The sanitized candidate reached the default branch through PR
+#3; WordPress remains production. The portfolio installation hold was lifted
+for Being Tea Co by the owner on 2026-10-13.
 
 ## Changelog
+
+- 2026-10-30 — Merged the sanitized brand-only candidate through PR #3 at
+  `dab5f299`; published and independently verified both noindex preview hosts
+  across 35 sitemap routes; confirmed WordPress remains healthy production with
+  81 pages and 14 posts; reverified the connected phone's companion APK against
+  the GitHub prerelease; audited the project/package data boundary; and pinned
+  patched transitive `nanoid` and `source-map-js` versions after two new
+  production dependency advisories were detected. Steep Timer remains live but is
+  not yet installed as a PWA. No DNS, commerce, personal-data, production
+  signing, or store action occurred.
 
 - 2026-10-29 — Owner confirmed WordPress production plus a separate preview and reaffirmed brand-only presentation. Reconciled the initial 79 published pages and 14 posts; replaced the one persona-framed Projects block without disturbing its 19 siblings; added published Companion and Companion Privacy pages; upgraded Next/React/RSC/Vite; tightened the brand-only route test; rebuilt the brand-only Brew Notes; and documented project/data boundaries. Native branch 3645b6f was pushed and its same-signature debug APK installed in place. Steep Timer 7bb93c1 was pushed and deployed. Website publication and public-history sanitation are the remaining work in this release pass.
 
