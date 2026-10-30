@@ -15,37 +15,43 @@ production signing, store submission, or publication of private material.
   launch PR #3 merged at `dab5f299`; audit PR #4 and dependency-hardening PR
   #5 closed the dependency findings; PR #6 finalized the public handoff; PR #7
   added the preview PWA; PRs #8-#9 finalized its public-safe receipt and host
-  boundary; and PR #10 corrected manifest discovery. The corrected source
-  checkpoint is `e5d699d8aa19c05a5568f12d4b4f95b1c8a2745e`.
+  boundary; PR #10 corrected manifest discovery; PRs #11-#12 finalized the
+  corrected receipts and package boundary; and PR #13 fixed the hosted offline
+  fallback. The PR #13 merge checkpoint is
+  `9e858b4cc92a35202b11ed0318a1a0898692cf5d`.
 - Cloudflare preview:
   https://being-tea-co-preview.christiancodyak.workers.dev. Worker version
-  `56ae09fc-81d6-4642-bc02-e9f4dc1dddd4` deployed successfully. The corrected
+  `f26a1111-72c4-488f-a853-cd7794f8d453` deployed successfully. The corrected
   verifier discovers the manifest from rendered HTML, requires a same-origin
   link, and passed service-worker, offline-page, icon, public-path, Brew Notes
   PDF-integrity, brand-only, noindex, private-route 404, and content checks.
-  Fresh Chrome returned zero installability errors and one active worker. An
+  Fresh Chrome returned zero installability errors and one active worker. A
+  fresh isolated Chrome profile then loaded the honest `/offline` fallback
+  while network requests were blocked. An
   independent sweep returned 35/35 routes at HTTP 200, all with `noindex,
   nofollow`, zero private/persona marker hits, and a disallow-all robots file.
 - OpenAI Sites preview:
-  https://being-tea-co.chriscodyak.chatgpt.site. Sites version 11, source commit
-  `6f6063b0c503660bf9d34698b0b9b83b0680cac9`, deployment
-  `appgdep_6ae46736f4f48191a1c3c416642ef5b5`, succeeded. The corrected live PWA
+  https://being-tea-co.chriscodyak.chatgpt.site. Sites version 12, source commit
+  `cc80192f0929031ac6e99e8363a2090a71bda5e5`, deployment
+  `appgdep_6ae4c38dff008191bce549cd31e43e9d`, succeeded. The corrected live PWA
   verifier passed; fresh Chrome returned zero installability errors and one
   active worker; and an independent 35-route sweep returned all routes at HTTP
   200 with `noindex, nofollow`, zero private/persona marker hits, and a
-  disallow-all robots file. The packaged source archive is
-  `Being-Tea-Co-Sites-PWA-Runtime-2026-10-30.tar.gz`, SHA-256
-  `ad2224d02ea914e1160f80a83c62bb0fa3a7b1017bf910e4c07b4782f0bbd1d9`.
-  It contains 213 tracked runtime-source members, the exact relative manifest
-  link, manifest/icons, network-first worker, and offline page. It excludes
-  operational handoff documents and obvious personal, credential, backup, and
-  recovery paths. Any package prefixed `SUPERSEDED-` is evidence only and must
-  not be deployed.
+  disallow-all robots file. Isolated offline navigation also passes. The exact
+  Sites helper archive is
+  `Being-Tea-Co-Sites-PWA-Runtime-Offline-Fixed-Sites-Source-2026-10-30.tar.gz`,
+  local SHA-256
+  `46f14adbee587f68c6a9ecd89dd6023093cc5c6fcf259cbab37fa6606e39b9b8`.
+  Sites accepted it as 160 files / 38,164,480 bytes with storage content hash
+  `sha256:72b5adf55765a6c534246520d1ab925bdad9da15593bda2f9bf4acaddd3da8ad`.
+  It contains the exact relative manifest link, manifest/icons, redirect-free
+  network-first fallback, and compiled runtime. Any package prefixed
+  `SUPERSEDED-` is evidence only and must not be deployed.
 
 Cloudflare is the authoritative PWA-install origin. Its served PWA text assets
 match the release after line-ending normalization. OpenAI Sites preserves the
 exact manifest and service worker but injects its hosting challenge script into
-`offline.html`; that fallback still works and contains no personal data.
+`/offline`; that fallback still works and contains no personal data.
 
 Both preview hosts are public only so the candidate can be reviewed. Their
 noindex state is intentional. Neither owns `beingteaco.com`, and neither may
@@ -64,6 +70,9 @@ replace WordPress without route/content/newsletter/redirect/rollback review.
   [GHSA-2v37-7h3g-55p8](https://github.com/advisories/GHSA-2v37-7h3g-55p8)
   and
   [GHSA-68fv-2mgg-jv7q](https://github.com/advisories/GHSA-68fv-2mgg-jv7q).
+- PR #13 adds a regression assertion that the worker caches `/offline`, not the
+  redirected `/offline.html`, and the live verifier requires an HTTP 200
+  redirect-free fallback.
 
 ## Preview PWA installation
 
@@ -72,18 +81,24 @@ replace WordPress without route/content/newsletter/redirect/rollback review.
   PR #10 corrected it to a same-origin relative link and strengthened the
   tests. Fresh Chromium checks of both corrected hosts return zero
   installability errors with one active worker.
-- The earlier generic Edge wrapper prompt was dismissed. It was not PWA proof,
-  and no desktop app was installed.
+- The earlier generic Edge wrapper prompt was dismissed because it was not PWA
+  proof. After owner confirmation, genuine manifest-derived install dialogs
+  installed and launched both Being Tea Co. Preview and Steep Timer as
+  standalone Edge apps.
 - The service worker uses network-first navigations and caches only public
   static assets plus the honest brand-only offline fallback. Page HTML, APIs,
   authentication, cookies, credentials, account information, and personal data
   are excluded from the cache.
-- Neither Being Tea Co. Preview nor Steep Timer is installed on Windows. The
-  Being Tea desktop install has not occurred because the final Edge/Windows
-  install action requires action-time owner confirmation.
-- Windows/phone installed-app and physical offline acceptance remain
-  incomplete. This is separate from source publication and from Steep Timer
-  acceptance.
+- `Get-StartApps` records Being Tea Co. Preview as
+  `being-tea-co-preview.christiancodyak.work-FAA835CD_y6bzsb8nrkt52!App` and
+  Steep Timer as
+  `justice-write.github.io-70B607B5_zhxr49f7y1p7t!App`. AppX readback reports
+  both packages at version 1.0.0.0 with status `Ok`. Optional taskbar/Start
+  pins, desktop shortcuts, and auto-start were declined.
+- A fresh isolated Chrome profile passed offline navigation for both preview
+  hosts and Steep Timer without touching the Edge user profile or personal
+  records. Installed-profile physical offline/update/uninstall acceptance and
+  phone installation remain incomplete and must not be inferred from that run.
 
 ## Companion package and installation
 
@@ -105,8 +120,9 @@ replace WordPress without route/content/newsletter/redirect/rollback review.
 - Live PWA: https://justice-write.github.io/Steep-Timer/
 - Production branch commit `7bb93c1` is deployed; the page and manifest return
   HTTP 200, and the local runtime-only ZIP has a recorded integrity hash.
-- Desktop/phone PWA installation and physical offline/background acceptance are
-  not yet complete.
+- The desktop PWA is installed, registered, and launched; isolated-profile
+  offline navigation passes. Phone installation and installed-profile physical
+  offline/background acceptance remain open.
 
 ## Package and personal-data boundary
 
@@ -139,9 +155,10 @@ opened, copied, reset, or seeded during this audit.
    reads.
 3. Complete companion manual/device acceptance, production signing, Play
    internal testing, and an iOS build.
-4. Install and physically accept the Being Tea Co. Preview PWA on Windows and
-   phone; the Windows action awaits confirmation.
-5. Finish Steep Timer installation/offline acceptance or leave it web-only.
+4. Install and physically accept the Being Tea Co. Preview PWA on a phone and
+   complete installed-profile offline/update/uninstall acceptance on Windows.
+5. Finish Steep Timer phone and installed-profile offline/background acceptance
+   or keep it desktop/web only.
 6. Resolve the visibility or retirement of any legacy editorial repository
    before pushing owner-only studio material.
 7. Define and test a complete paid-product lifecycle before activating

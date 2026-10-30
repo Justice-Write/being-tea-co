@@ -47,11 +47,15 @@ the project workspaces, bounded GitHub/ChatGPT folders, Downloads, Desktop,
 Start Menu, and OneDrive. Dependencies, Git objects, browser profiles,
 credentials, and private file contents were excluded.
 
-Windows installed-app, package, shortcut, Start-menu, and Chromium web-app
-inventory found neither Being Tea Co. Preview nor Steep Timer installed. The
-connected Android test phone has only `co.beingtea.companion` version 1.0.1 /
-code 2 among the Being Tea packages checked; no app was launched and no private
-journal data was inspected.
+The initial Windows inventory found neither PWA installed. After owner-confirmed
+manifest-derived Edge installs, both standalone apps launched successfully.
+`Get-StartApps` and AppX independently report Being Tea Co. Preview and Steep
+Timer at version 1.0.0.0/status `Ok`, with AppIDs
+`being-tea-co-preview.christiancodyak.work-FAA835CD_y6bzsb8nrkt52!App` and
+`justice-write.github.io-70B607B5_zhxr49f7y1p7t!App`. Optional pins, desktop
+shortcuts, and auto-start were declined. The connected Android test phone has
+only `co.beingtea.companion` version 1.0.1 / code 2 among the Being Tea packages
+checked. No private journal or browser-profile content was inspected.
 
 This is NOT an exhaustive content scan of every drive: generic filenames, unavailable cloud-only files, browser profile storage, phone-private records, credentials and unsearched archives remain outside coverage. No personal journal export was identified by filename; that does not establish its absence. No private founder image was opened, and no personal records were moved or deleted.
 
@@ -59,8 +63,8 @@ This is NOT an exhaustive content scan of every drive: generic filenames, unavai
 
 1. Use the current root handoff and 2026-10-30 release receipt, not September APK briefing claims.
 2. Keep WordPress production and reconcile its newer routes/content before proposing any replacement.
-3. Install and physically accept the Being Tea Co. Preview PWA on Windows and phone; the Windows action requires action-time confirmation.
+3. Complete Being Tea Co. Preview phone installation and installed-profile physical offline/update/uninstall acceptance; Windows install/launch/registration and isolated offline navigation are done.
 4. Complete native manual brewing/export/accessibility and notification/lock/background acceptance without reading or resetting private journals.
-5. Verify Steep Timer installation/offline behavior or explicitly leave it web-only; keep this separate from the preview-PWA decision.
+5. Complete Steep Timer phone and installed-profile offline/background acceptance or explicitly keep it desktop/web only; keep this separate from the preview-PWA decision.
 6. Keep per-article approval and specialist review gates; source-checked does not mean approved.
 7. Paid offer, price, refund/markets, merchant connection and delivery remain separate owner decisions.
