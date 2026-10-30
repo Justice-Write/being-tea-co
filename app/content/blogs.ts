@@ -12,6 +12,7 @@ export type BlogPost = {
   imageBrief: string;
   altText: string;
   socialExcerpts: string[];
+  publicationGate?: "cultural-review" | "health-review";
 };
 
 export const blogs = [
@@ -38,7 +39,7 @@ export const blogs = [
       },
       {
         "heading": "A better first question",
-        "markdown": "When meeting an unfamiliar tea, begin with five questions:\n\n1. What plant material is this—tea or a tisane?\n2. Where was it grown?\n3. When and how was it harvested?\n4. What processing path did it take?\n5. How does the seller know?\n\nThose questions are more useful than asking whether a tea is “fancy.” They move attention from marketing language toward plant, place, labor, and craft.\n\nThe Food and Agriculture Organization reports that tea supports millions of growers, workers, and families, with smallholders producing a major share of the world’s tea ([FAO International Tea Day](https://www.fao.org/international-tea-day/home/international-tea-day-2025/en)). Every finished leaf therefore carries both a biological story and a human one.\n\nThe next time six teas look impossibly different, place them side by side. Notice their shapes. Smell the dry leaves. Add water and compare the opened leaf. The lesson is not that all tea is the same. It is that astonishing difference can begin from one living plant."
+        "markdown": "When meeting an unfamiliar tea, begin with five questions:\n\n1. What plant material is this—tea or a tisane?\n2. Where was it grown?\n3. When and how was it harvested?\n4. What processing path did it take?\n5. How does the seller know?\n\nThose questions are more useful than asking whether a tea is “fancy.” They move attention from marketing language toward plant, place, labor, and craft.\n\nThe Food and Agriculture Organization reports that tea supports millions of growers, workers, and families, with smallholders producing a major share of the world’s tea ([FAO International Tea Day](https://www.fao.org/international-tea-day/en)). Every finished leaf therefore carries both a biological story and a human one.\n\nThe next time six teas look impossibly different, place them side by side. Notice their shapes. Smell the dry leaves. Add water and compare the opened leaf. The lesson is not that all tea is the same. It is that astonishing difference can begin from one living plant."
       }
     ],
     "sourceLinks": [
@@ -56,7 +57,7 @@ export const blogs = [
       },
       {
         "label": "FAO — International Tea Day",
-        "url": "https://www.fao.org/international-tea-day/home/international-tea-day-2025/en"
+        "url": "https://www.fao.org/international-tea-day/en"
       }
     ],
     "imageKey": "b01",
@@ -140,7 +141,7 @@ export const blogs = [
       },
       {
         "heading": "1. Plant and place",
-        "markdown": "*Camellia sinensis* is an evergreen, but a named tea is more specific than a species. Cultivar, plant age, elevation, shade, rainfall, temperature, soil, pests, pruning, and farming system affect growth. The season and even the weather between harvest days can alter tenderness and chemistry.\n\nTea also supports livelihoods at enormous scale. The Food and Agriculture Organization says the sector supports more than 13 million people and that smallholders produce a large share of the world’s tea ([FAO International Tea Day](https://www.fao.org/international-tea-day/home/international-tea-day-2025/en)). “Origin” is therefore not just a flavor word. It names living communities and working landscapes."
+        "markdown": "*Camellia sinensis* is an evergreen, but a named tea is more specific than a species. Cultivar, plant age, elevation, shade, rainfall, temperature, soil, pests, pruning, and farming system affect growth. The season and even the weather between harvest days can alter tenderness and chemistry.\n\nTea also supports livelihoods at enormous scale. The Food and Agriculture Organization says the sector supports more than 13 million people and that smallholders produce a large share of the world’s tea ([FAO International Tea Day](https://www.fao.org/international-tea-day/en)). “Origin” is therefore not just a flavor word. It names living communities and working landscapes."
       },
       {
         "heading": "2. Harvest",
@@ -156,7 +157,7 @@ export const blogs = [
       },
       {
         "heading": "5. Guide oxidation—or limit it",
-        "markdown": "Green-tea makers apply heat relatively early to inactivate enzymes and limit oxidation. Oolong makers repeatedly bruise and rest leaves, guiding partial oxidation and aroma formation. Black-tea makers allow more extensive oxidation before drying. A Washington State University production guide summarizes common steps such as withering, rolling, oxidation, and drying while emphasizing that processing varies by tea and region ([WSU Extension](https://wpcdn.web.wsu.edu/extension/uploads/sites/25/2025/04/Tea-production-extension-guide.pdf)).\n\nThis is a good place to retire the phrase “fully oxidized.” Black tea is extensively oxidized, but “fully” implies a simple finish line that craft does not always obey."
+        "markdown": "Green-tea makers apply heat relatively early to inactivate enzymes and limit oxidation. Oolong makers repeatedly bruise and rest leaves, guiding partial oxidation and aroma formation. Black-tea makers allow more extensive oxidation before drying. A Washington State University production guide summarizes common steps such as withering, rolling, oxidation, and drying while emphasizing that processing varies by tea and region ([WSU Extension](https://s3.wp.wsu.edu/uploads/sites/2709/2023/07/Tea-extension-guide-.pdf)).\n\nThis is a good place to retire the phrase “fully oxidized.” Black tea is extensively oxidized, but “fully” implies a simple finish line that craft does not always obey."
       },
       {
         "heading": "6. Heat, dry, roast, or ferment",
@@ -182,11 +183,11 @@ export const blogs = [
     "sourceLinks": [
       {
         "label": "FAO — International Tea Day",
-        "url": "https://www.fao.org/international-tea-day/home/international-tea-day-2025/en"
+        "url": "https://www.fao.org/international-tea-day/en"
       },
       {
         "label": "Washington State University Extension — Tea Production Guide",
-        "url": "https://wpcdn.web.wsu.edu/extension/uploads/sites/25/2025/04/Tea-production-extension-guide.pdf"
+        "url": "https://s3.wp.wsu.edu/uploads/sites/2709/2023/07/Tea-extension-guide-.pdf"
       },
       {
         "label": "UNESCO — Traditional tea processing techniques and associated social practices in China",
@@ -259,7 +260,7 @@ export const blogs = [
       },
       {
         "label": "FAO — International Tea Day",
-        "url": "https://www.fao.org/international-tea-day/home/international-tea-day-2025/en"
+        "url": "https://www.fao.org/international-tea-day/en"
       }
     ],
     "imageKey": "b04",
@@ -324,7 +325,7 @@ export const blogs = [
       },
       {
         "label": "Washington State University Extension — Tea Production Guide",
-        "url": "https://wpcdn.web.wsu.edu/extension/uploads/sites/25/2025/04/Tea-production-extension-guide.pdf"
+        "url": "https://s3.wp.wsu.edu/uploads/sites/2709/2023/07/Tea-extension-guide-.pdf"
       }
     ],
     "imageKey": "b05",
@@ -341,7 +342,7 @@ export const blogs = [
     "slug": "oolong-is-a-spectrum",
     "title": "Oolong Is a Spectrum: From Floral Lift to Roasted Depth",
     "dek": "Partial oxidation is only the beginning. Cultivar, bruising, roast, shape, and repeated infusions make oolong one of tea’s broadest territories.",
-    "date": "2026-09-28",
+    "date": "2026-10-19",
     "readTime": "8 minutes",
     "category": "Tea Families",
     "bodySections": [
@@ -382,10 +383,6 @@ export const blogs = [
       {
         "label": "Recent Advances in Volatiles of Teas",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6273888/"
-      },
-      {
-        "label": "Washington State University Extension — Tea Production Guide",
-        "url": "https://wpcdn.web.wsu.edu/extension/uploads/sites/25/2025/04/Tea-production-extension-guide.pdf"
       }
     ],
     "imageKey": "b06",
@@ -402,7 +399,7 @@ export const blogs = [
     "slug": "green-tea-without-fear",
     "title": "Green Tea Without Fear: Heat, Water, and a More Forgiving Cup",
     "dek": "Green tea is not fragile glass. Learn why steamed and pan-heated leaves behave differently, then use temperature and time as adjustable tools.",
-    "date": "2026-10-05",
+    "date": "2026-10-26",
     "readTime": "8 minutes",
     "category": "Tea Families",
     "bodySections": [
@@ -412,7 +409,7 @@ export const blogs = [
       },
       {
         "heading": "Steamed, pan-heated, and beyond",
-        "markdown": "Many Japanese green teas are steamed, a method often associated with vivid color, fresh vegetal aroma, and leaves that may become fine or fragmented. Many Chinese green teas are heated in pans or rotating drums, often bringing chestnut, bean, or toasted impressions. These are broad tendencies with many exceptions.\n\nThe important lesson is that broken-looking leaf is not automatically low quality. Deep steaming can create fine particles in excellent sencha. A flat Longjing-style leaf and a rolled gunpowder-style leaf need different visual expectations."
+        "markdown": "Many Japanese green teas are steamed, while many Chinese green teas are heated in pans or woks; Washington State University’s processing overview describes these as broad methods rather than rules for every tea ([WSU — Tea Types and Home Processing](https://vegetables.wsu.edu/tea-types-and-home-processing/)). The sensory descriptions that drinkers associate with those methods are tendencies with many exceptions.\n\nThe important lesson is that broken-looking leaf is not automatically low quality. Deep steaming can create fine particles in excellent sencha. A flat Longjing-style leaf and a rolled gunpowder-style leaf need different visual expectations."
       },
       {
         "heading": "Why bitterness happens",
@@ -424,7 +421,7 @@ export const blogs = [
       },
       {
         "heading": "Water can hide the light",
-        "markdown": "The same tea can look and taste different across cities. In controlled green-tea tests, water mineral content and pH affected aroma compounds, taste, and liquor color; lower-mineral water near neutral pH was often favorable for brewing ([Food Chemistry: X](https://pmc.ncbi.nlm.nih.gov/articles/PMC10192933/)).\n\nIf a trusted tea stays dull or develops a surface film, compare:\n\n1. tap water;\n2. filtered tap water;\n3. a moderate- or low-mineral bottled water.\n\nDo not chase “pure” water at any cost. Distilled water can produce a flat cup. The goal is a compatible water, not zero minerals."
+        "markdown": "The same tea can look and taste different across cities. In controlled green-tea tests, water mineral content and pH affected aroma compounds, taste, and liquor color; lower-mineral water near neutral pH was often favorable for brewing ([Food Chemistry: X](https://pmc.ncbi.nlm.nih.gov/articles/PMC10192933/)).\n\nIf a trusted tea stays dull or develops a surface film, compare:\n\n1. tap water;\n2. filtered tap water;\n3. a moderate- or low-mineral bottled water.\n\nDo not chase “pure” water at any cost. In a side-by-side home trial, distilled water may taste flat; treat that as an observation to compare, not a universal result. The goal is compatible water, not zero minerals."
       },
       {
         "heading": "Freshness and storage matter",
@@ -432,7 +429,7 @@ export const blogs = [
       },
       {
         "heading": "Iced and cold approaches",
-        "markdown": "For iced tea, brew slightly concentrated and pour over a measured amount of ice, or cool promptly after brewing. For cold brew, combine leaf and cold potable water in a clean covered vessel and refrigerate. Start around 5–8 grams per liter for 6–10 hours, then strain and keep refrigerated.\n\nLong cold contact does not mean caffeine-free. Extraction differs from a brief hot steep, but caffeine remains possible and total amounts are hard to predict without testing."
+        "markdown": "For iced tea, brew slightly concentrated and pour over a measured amount of ice, or cool promptly after brewing. For a conservative cold-brew house trial, combine 5–8 grams of leaf per liter of cold potable water in a clean covered vessel, keep it refrigerated at or below 4°C / 40°F for 6–10 hours, then strain and consume promptly. The FDA’s general refrigerator guidance uses 4°C / 40°F or below; this recipe does not establish a tested shelf life ([FDA — Are You Storing Food Safely?](https://www.fda.gov/consumers/consumer-updates/are-you-storing-food-safely)).\n\nLong cold contact does not mean caffeine-free. Extraction differs from a brief hot steep, but caffeine remains possible and total amounts are hard to predict without testing."
       },
       {
         "heading": "Look for liveliness, not one color",
@@ -455,6 +452,14 @@ export const blogs = [
       {
         "label": "Oxygen scavengers and Longjing aroma during storage",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11698971/"
+      },
+      {
+        "label": "Washington State University — Tea Types and Home Processing",
+        "url": "https://vegetables.wsu.edu/tea-types-and-home-processing/"
+      },
+      {
+        "label": "FDA — Are You Storing Food Safely?",
+        "url": "https://www.fda.gov/consumers/consumer-updates/are-you-storing-food-safely"
       }
     ],
     "imageKey": "b07",
@@ -471,7 +476,7 @@ export const blogs = [
     "slug": "pu-erh-raw-ripe-age-provenance",
     "title": "Pu-erh Without the Myth Fog: Raw, Ripe, Age, and Provenance",
     "dek": "Old does not automatically mean excellent. Start with process, origin, storage, and the evidence behind the wrapper.",
-    "date": "2026-10-19",
+    "date": "2026-11-02",
     "readTime": "9 minutes",
     "category": "Tea Families",
     "bodySections": [
@@ -493,7 +498,7 @@ export const blogs = [
       },
       {
         "heading": "The living landscape behind the name",
-        "markdown": "Pu-erh is not only a product category. UNESCO’s Cultural Landscape of Old Tea Forests of Jingmai Mountain describes a tea-growing system developed for more than a thousand years by Blang and Dai communities, integrating old tea groves, forests, villages, traditional governance, and belief ([UNESCO World Heritage Centre](https://whc.unesco.org/en/list/1665)).\n\nThat history deserves more than an “ancient tree” sticker. Respectful buying names communities and avoids turning Indigenous stewardship into anonymous luxury atmosphere."
+        "markdown": "Pu-erh is not only a product category. UNESCO’s Cultural Landscape of Old Tea Forests of Jingmai Mountain describes a tea-growing system developed for more than a thousand years by Blang and Dai communities, integrating old tea groves, forests, villages, traditional governance, and belief ([UNESCO World Heritage Centre](https://whc.unesco.org/en/list/1665)).\n\nThat history deserves more than an “ancient tree” sticker. Respectful buying names communities and avoids turning Blang and Dai stewardship into anonymous luxury atmosphere."
       },
       {
         "heading": "Buy samples before stories",
@@ -501,7 +506,7 @@ export const blogs = [
       },
       {
         "heading": "Storage is part of provenance",
-        "markdown": "Temperature and relative humidity shape microbial communities and chemical change in dark tea ([storage-humidity study](https://pmc.ncbi.nlm.nih.gov/articles/PMC10534245/)). Home aging is therefore not “put it on a shelf and wait.” Excess moisture risks mold; extreme dryness can stall transformation and flatten aroma; kitchen odors can enter the leaf.\n\nFor most beginners, buying well-stored tea from a transparent specialist is safer than engineering a humid microclimate. Keep pu-erh away from odors, sunlight, condensation, and uncontrolled dampness. Monitor rather than mythologize.\n\nPu-erh becomes more interesting when the fog clears. Raw and ripe. Plant and process. Community and landscape. Custody and storage. Cup and preference. The real story is complex enough; it does not need invented age."
+        "markdown": "Relative humidity shapes microbial communities and chemical change in raw dark tea; in one study, mid-range humidity (57%) scored best in tasting ([storage-humidity study](https://pmc.ncbi.nlm.nih.gov/articles/PMC10534245/)). Home aging is therefore not “put it on a shelf and wait.” Excess moisture risks mold; extreme dryness can stall transformation and flatten aroma; kitchen odors can enter the leaf.\n\nFor most beginners, buying well-stored tea from a transparent specialist is safer than engineering a humid microclimate. Keep pu-erh away from odors, sunlight, condensation, and uncontrolled dampness. Monitor rather than mythologize.\n\nPu-erh becomes more interesting when the fog clears. Raw and ripe. Plant and process. Community and landscape. Custody and storage. Cup and preference. The real story is complex enough; it does not need invented age."
       }
     ],
     "sourceLinks": [
@@ -523,8 +528,8 @@ export const blogs = [
       }
     ],
     "imageKey": "b08",
-    "imageBrief": "Archival but contemporary still life: intact wrapped pu-erh cake with generic unbranded paper, a broken cross-section, loose raw maocha, dark ripe leaf, two contrasting cups, and a simple provenance card left blank. No invented Chinese seals or legible fake writing.",
-    "altText": "A wrapped pu-erh cake, loose raw and ripe leaves, and two contrasting infusions.",
+    "imageBrief": "Evidence-focused still life with unwrapped raw and ripe pu-erh cakes, loose leaves, two contrasting cups, a dry storage box, and a humidity gauge. No invented seals or legible fake writing.",
+    "altText": "Sheng and shou tea cakes, dry leaves, cups, storage box, and humidity gauge are compared as evidence.",
     "socialExcerpts": [
       "Raw does not become ripe with age. They are different processing paths.",
       "‘Generational’ should trigger questions about date, maker, custody, and storage—not automatic trust.",
@@ -536,7 +541,7 @@ export const blogs = [
     "slug": "home-tea-storage",
     "title": "Home Tea Storage: Protect the Leaf You Paid For",
     "dek": "Tea’s enemies are ordinary—heat, moisture, oxygen, light, and odor. A calm storage system preserves more than a cupboard full of gadgets.",
-    "date": "2026-10-26",
+    "date": "2026-11-09",
     "readTime": "7 minutes",
     "category": "Care",
     "bodySections": [
@@ -546,7 +551,7 @@ export const blogs = [
       },
       {
         "heading": "The five everyday threats",
-        "markdown": "**Heat.** A cabinet above the kettle or beside the oven experiences repeated heat. Choose an interior cupboard away from appliances and sunlight.\n\n**Moisture.** Steam from a sink, dishwasher, or stove is the enemy of a dry leaf. Never scoop with a damp spoon. Close the package promptly.\n\n**Oxygen.** Every opening replaces protective packaging atmosphere with room air. Buy amounts you can finish, divide bulk tea into smaller working portions, and press excess air from barrier pouches when practical.\n\n**Light.** Clear glass looks beautiful but exposes leaf. Put clear jars inside a closed cupboard, or use opaque containers.\n\n**Odor.** Tea can absorb the smell of coffee, spices, incense, soap, wood finishes, or the cupboard itself. Airtightness matters in both directions.\n\nReviews of tea aroma describe storage as one of the factors that changes volatile compounds and sensory quality ([*Recent Advances in Volatiles of Teas*](https://pmc.ncbi.nlm.nih.gov/articles/PMC6273888/)). Studies of black tea likewise report that heat and moisture accelerate undesirable deterioration ([review of black-tea harvesting and processing](https://pmc.ncbi.nlm.nih.gov/articles/PMC10743253/))."
+        "markdown": "**Heat.** A cabinet above the kettle or beside the oven experiences repeated heat. Choose an interior cupboard away from appliances and sunlight.\n\n**Moisture.** Steam from a sink, dishwasher, or stove is the enemy of a dry leaf. Never scoop with a damp spoon. Close the package promptly.\n\n**Oxygen.** Every opening replaces protective packaging atmosphere with room air. Buy amounts you can finish, divide bulk tea into smaller working portions, and press excess air from barrier pouches when practical.\n\n**Light.** Clear glass looks beautiful but exposes leaf. Put clear jars inside a closed cupboard, or use opaque containers.\n\n**Odor.** Tea can absorb the smell of coffee, spices, incense, soap, wood finishes, or the cupboard itself. Airtightness matters in both directions.\n\nReviews of tea aroma describe storage as one of the factors that changes volatile compounds and sensory quality ([*Recent Advances in Volatiles of Teas*](https://pmc.ncbi.nlm.nih.gov/articles/PMC6273888/)). Studies of black tea likewise report that moisture and light degrade quality over prolonged storage ([review of black-tea harvesting and processing](https://pmc.ncbi.nlm.nih.gov/articles/PMC10743253/))."
       },
       {
         "heading": "A three-layer system",
@@ -566,7 +571,7 @@ export const blogs = [
       },
       {
         "heading": "The monthly five-minute reset",
-        "markdown": "Once a month:\n\n1. close every pouch;\n2. check tins for odor and moisture;\n3. move near-expiry teas to the front;\n4. note what is open;\n5. choose one tea to finish before buying more.\n\nStorage is part of respecting labor. Growers and makers controlled moisture, heat, and time long before the leaf reached you. A clean pouch, a decent tin, and a cool cupboard carry that care the final few feet to the cup."
+        "markdown": "Once a month:\n\n1. close every pouch;\n2. check tins for odor and moisture;\n3. move the oldest open packages or nearest best-by dates to the front;\n4. note what is open;\n5. choose one tea to finish before buying more.\n\nStorage is part of respecting labor. Growers and makers controlled moisture, heat, and time long before the leaf reached you. A clean pouch, a decent tin, and a cool cupboard carry that care the final few feet to the cup."
       }
     ],
     "sourceLinks": [
@@ -601,9 +606,10 @@ export const blogs = [
     "slug": "teaware-field-guide",
     "title": "A Teaware Field Guide: Choose the Vessel for the Session",
     "dek": "Gaiwan, basket, kyusu, clay pot, fairness pitcher, cups, tray, and tea pet: what each tool does—and what you can skip.",
-    "date": "2026-11-02",
+    "date": "2026-11-16",
     "readTime": "9 minutes",
     "category": "Teaware",
+    "publicationGate": "cultural-review",
     "bodySections": [
       {
         "heading": "",
@@ -611,11 +617,11 @@ export const blogs = [
       },
       {
         "heading": "The core vessels",
-        "markdown": "**Basket infuser.** The most forgiving entry tool. Choose a wide, fine-mesh basket that lets leaf expand and can be removed cleanly. It suits larger mugs, broken leaf, and daily one- or two-infusion brewing.\n\n**Gaiwan.** A Chinese lidded bowl, typically with saucer, bowl, and lid. It can brew many tea families, pours quickly, and lets you inspect leaf. Porcelain is neutral and easy to clean. Practice with cool water before handling hot liquor; a smaller gaiwan is often easier than a dramatic large one.\n\n**Glass or glazed pot.** Neutral, observable, and easy to share. A removable basket or built-in strainer prevents oversteeping. Glass loses heat relatively quickly and reveals leaf movement; glazed ceramic offers many heat-retention profiles.\n\n**Kyusu.** “Kyusu” simply means teapot in Japanese, though abroad it often refers to a side-handled pot used for Japanese green tea. Fine built-in screens suit small steamed leaves. Side handles make low, controlled pouring comfortable.\n\n**Unglazed clay pot.** Yixing and other unglazed wares can retain traces of aroma and change the brewing experience through clay, geometry, wall thickness, and heat behavior. The British Museum notes Yixing’s long history and the high esteem of its individually made red and brown stonewares ([British Museum](https://www.britishmuseum.org/collection/object/A_Franks-2459)).\n\nClay is not an automatic upgrade. Provenance is difficult, counterfeit claims are common, and porous ware requires careful cleaning without scented soap. Learn with porcelain before buying expensive clay; you will know what difference you are paying to hear."
+        "markdown": "**Basket infuser.** The most forgiving entry tool. Choose a wide, fine-mesh basket that lets leaf expand and can be removed cleanly. It suits larger mugs, broken leaf, and daily one- or two-infusion brewing.\n\n**Gaiwan.** A Chinese lidded bowl, typically with saucer, bowl, and lid. It can brew many tea families, pours quickly, and lets you inspect leaf. Porcelain is neutral and easy to clean. Practice with cool water before handling hot liquor; a smaller gaiwan is often easier than a dramatic large one.\n\n**Glass or glazed pot.** Neutral, observable, and easy to share. A removable basket or built-in strainer prevents oversteeping. Glass loses heat relatively quickly and reveals leaf movement; glazed ceramic offers many heat-retention profiles.\n\n**Kyusu.** “Kyusu” simply means teapot in Japanese, though abroad it often refers to a side-handled pot used for Japanese green tea. Fine built-in screens suit small steamed leaves. Side handles make low, controlled pouring comfortable.\n\n**Unglazed clay pot.** Clay composition, geometry, wall thickness, and heat behavior can make one pot feel different from another in use. The British Museum notes Yixing’s long history and the esteem its wares earned among scholar-officials ([British Museum](https://www.britishmuseum.org/collection/object/A_Franks-2459)).\n\nClay is not an automatic upgrade. Ask for evidence behind provenance and material claims, follow the maker’s care guidance, and learn with neutral porcelain before deciding whether an expensive clay pot solves a real brewing need."
       },
       {
         "heading": "The serving pieces",
-        "markdown": "**Fairness pitcher (*gong dao bei* or *cha hai*).** Receives the entire infusion before it is divided, making each guest’s cup more even. It also prevents leaf from continuing to steep while you serve.\n\n**Cup.** Thin porcelain emphasizes immediate aroma and cools quickly. Thick stoneware holds heat and feels substantial. A tall aroma cup is used in some Taiwanese gongfu contexts; a Japanese chawan is made for whisked tea and is not simply an oversized steeped-tea cup.\n\nTea bowls carry deep histories. The Metropolitan Museum of Art notes that Chinese Jian-style “hare’s-fur” bowls became prized in Japan, especially among Buddhist monks, and inspired later Japanese production ([Met object record](https://www.metmuseum.org/art/collection/search/48115)). Objects travel and acquire new meanings; name those histories rather than calling every handmade bowl “Zen.”\n\n**Tray.** A dry tray organizes tools. A drainage tray handles generous rinsing and overflow. Neither is required. If using a drainage tray, empty and clean it promptly so the ritual does not end in stagnant tea."
+        "markdown": "**Fairness pitcher (*gong dao bei* or *cha hai*).** Receives the entire infusion before it is divided, making each guest’s cup more even. It also prevents leaf from continuing to steep while you serve.\n\n**Cup.** Thin porcelain emphasizes immediate aroma and cools quickly. Thick stoneware holds heat and feels substantial. A tall aroma cup is used in some Taiwanese gongfu contexts; a Japanese chawan is made for whisked tea and is not simply an oversized steeped-tea cup.\n\nTea bowls carry deep histories. The Metropolitan Museum of Art notes that Chinese tea bowls of this type became prized in Japan, especially among Buddhist monks, and that similar vessels were later made in Japanese kilns such as Seto ([Met object record](https://www.metmuseum.org/art/collection/search/48115)). Objects travel and acquire new meanings; name those histories rather than calling every handmade bowl “Zen.”\n\n**Tray.** A dry tray organizes tools. A drainage tray handles generous rinsing and overflow. Neither is required. If using a drainage tray, empty and clean it promptly so the ritual does not end in stagnant tea."
       },
       {
         "heading": "Small tools and trinkets",
@@ -646,10 +652,6 @@ export const blogs = [
       {
         "label": "Metropolitan Museum of Art — The Japanese Tea Ceremony",
         "url": "https://www.metmuseum.org/pt/essays/the-japanese-tea-ceremony"
-      },
-      {
-        "label": "Kyoto National Museum — Tenmoku Teabowls",
-        "url": "https://www.kyohaku.go.jp/eng/learn/home/dictio/touji/tenmoku/"
       }
     ],
     "imageKey": "b10",
@@ -666,9 +668,10 @@ export const blogs = [
     "slug": "tea-ceremony-hospitality-and-respect",
     "title": "Tea Ceremony, Hospitality, and Respectful Practice",
     "dek": "There is no single global “tea ceremony.” To learn well, name the tradition, credit its bearers, and distinguish formal practice from your personal ritual.",
-    "date": "2026-11-16",
+    "date": "2026-11-23",
     "readTime": "9 minutes",
     "category": "Culture",
+    "publicationGate": "cultural-review",
     "bodySections": [
       {
         "heading": "",
@@ -684,11 +687,11 @@ export const blogs = [
       },
       {
         "heading": "What Being Tea Co. learned from Deer Park",
-        "markdown": "Being Tea Co.’s founder encountered tea within personal experiences at Deer Park Monastery in Escondido, California. Deer Park describes itself as a mindfulness practice and monastic training center in the Plum Village tradition founded by Zen Master Thich Nhat Hanh ([Deer Park — About Us](https://deerparkmonastery.org/about-us/)).\n\nAn archived Deer Park teaching on tea meditation describes being truly present with tea and friends, sitting together in a joyful, serene atmosphere, and allowing sharing to arise without forcing it ([Deer Park — Be Mindful in Daily Life](https://wp.deerparkmonastery.org/be-mindful-in-daily-life/)).\n\nWhat we can honestly say is personal:\n\n- slowing down changed how the founder noticed tea;\n- shared tea created space for presence and community;\n- those experiences continue to inform this independent educational project.\n\nWhat we should not say:\n\n- that Being Tea Co. represents Deer Park, Plum Village, Buddhism, or Thich Nhat Hanh;\n- that ordinary product content is an official monastic teaching;\n- that monastery imagery endorses a future shop.\n\nThe standing language is: **Inspired in part by personal experiences at Deer Park Monastery. Independent and unaffiliated.**"
+        "markdown": "Being Tea Co.’s founder encountered tea within personal experiences at Deer Park Monastery in Escondido, California. Deer Park describes itself as a mindfulness practice and monastic training center in the Plum Village tradition founded by Zen Master Thich Nhat Hanh ([Deer Park — About Us](https://deerparkmonastery.org/about-us/)).\n\nAn archived Deer Park teaching on tea meditation describes being truly present with tea and friends, sitting together in a joyful, serene atmosphere, and treating a shared song or story as welcome but optional—one can sit relaxed without needing to speak ([Deer Park — Be Mindful in Daily Life](https://archive.deerparkmonastery.org/be-mindful-in-daily-life/)).\n\nWhat we can honestly say is personal:\n\n- slowing down changed how the founder noticed tea;\n- shared tea created space for presence and community;\n- those experiences continue to inform this independent educational project.\n\nWhat we should not say:\n\n- that Being Tea Co. represents Deer Park, Plum Village, Buddhism, or Thich Nhat Hanh;\n- that ordinary product content is an official monastic teaching;\n- that monastery imagery endorses a future shop.\n\nThe standing language is: **Inspired in part by personal experiences at Deer Park Monastery. Independent and unaffiliated.**"
       },
       {
         "heading": "Learn without flattening",
-        "markdown": "Avoid the composite “Asian tea ceremony”: a Japanese whisk, Chinese gaiwan, generic bamboo, monk silhouette, and invented calligraphy assembled for mood. It turns distinct living traditions into décor.\n\nInstead, build one clearly sourced lesson at a time. Interview practitioners when possible. Pay teachers and image-makers. Pronounce terms carefully. Link to museums, cultural institutions, and community sources. Correct mistakes publicly.\n\nUNESCO’s account of Chinese tea heritage emphasizes that knowledge is transmitted through families and apprenticeships and held by farmers, producers, artists, and other community members ([UNESCO](https://ich.unesco.org/en/RL/traditional-tea-processing-techniques-and-associated-social-practices-in-china-01884)). Credit should follow that living chain."
+        "markdown": "Avoid the composite “Asian tea ceremony”: a Japanese whisk, Chinese gaiwan, generic bamboo, monk silhouette, and invented calligraphy assembled for mood. It turns distinct living traditions into décor.\n\nInstead, build one clearly sourced lesson at a time. Interview practitioners when possible. Pay teachers and image-makers. Pronounce terms carefully. Link to museums, cultural institutions, and community sources. Correct mistakes publicly.\n\nUNESCO’s account of Chinese tea heritage emphasizes that knowledge is transmitted through families and apprenticeships and held by tea producers, farmers, artists, and the makers of pastries served with tea ([UNESCO](https://ich.unesco.org/en/RL/traditional-tea-processing-techniques-and-associated-social-practices-in-china-01884)). Credit should follow that living chain."
       },
       {
         "heading": "A respectful home tea pause",
@@ -714,7 +717,7 @@ export const blogs = [
       },
       {
         "label": "Deer Park Monastery — Tea Meditation in Daily Life",
-        "url": "https://wp.deerparkmonastery.org/be-mindful-in-daily-life/"
+        "url": "https://archive.deerparkmonastery.org/be-mindful-in-daily-life/"
       },
       {
         "label": "UNESCO — Traditional tea processing and social practices in China",
@@ -722,8 +725,8 @@ export const blogs = [
       }
     ],
     "imageKey": "b11",
-    "imageBrief": "A shared table with three distinct, non-blended vignettes separated by negative space: Chinese-style steeped tea service, Japanese matcha tools, and Turkish/Azerbaijani-style pear-shaped tea glass with accompaniments. No people in costume, no mixing tools into one invented ceremony, museum-like captions added in HTML.",
-    "altText": "Three separate tea-service traditions shown side by side without combining their utensils.",
+    "imageBrief": "A neutral contemporary shared table where one guest offers a simple cup of tea to another. The scene emphasizes welcome without costume, sacred symbols, institutional settings, or claims to document a formal tradition.",
+    "altText": "One guest offers a simple cup of tea to another around a contemporary shared table.",
     "socialExcerpts": [
       "There is no single global tea ceremony. Name the tradition, place, people, and source.",
       "A personal ritual can be meaningful without being marketed as inherited authority.",
@@ -735,9 +738,10 @@ export const blogs = [
     "slug": "tea-drunk-caffeine-and-clearer-language",
     "title": "“Tea Drunk,” Caffeine, and a Clearer Way to Talk About the Feeling",
     "dek": "Tea can feel bright, calm, warm, social, or intense. The experience is real to the drinker; the popular explanations are not always proven.",
-    "date": "2026-11-23",
+    "date": "2026-11-30",
     "readTime": "9 minutes",
     "category": "Tea & Body",
+    "publicationGate": "health-review",
     "bodySections": [
       {
         "heading": "",
@@ -745,7 +749,7 @@ export const blogs = [
       },
       {
         "heading": "What is definitely in the conversation",
-        "markdown": "Tea from *Camellia sinensis* contains caffeine and many other compounds, including polyphenols and the amino acid L-theanine ([NCCIH](https://www.nccih.nih.gov/health/tea)). Caffeine is a stimulant. It can increase alertness, but too much can cause jitters, anxiety, insomnia, nausea, headache, increased heart rate, or palpitations.\n\nThe FDA cites 400 milligrams per day for most adults as an amount not generally associated with negative effects, while stressing that sensitivity and elimination vary with body, medication, and health conditions ([FDA](https://www.fda.gov/consumers/consumer-updates/spilling-beans-how-much-caffeine-too-much)). That is a population-level reference, not a personal target and not permission to push until symptoms appear.\n\nPregnancy, breastfeeding, certain conditions, and some medications require individualized guidance. Children and teens need different limits. A clinician is the right source for personal medical advice."
+        "markdown": "Tea from *Camellia sinensis* contains caffeine and many other compounds, including polyphenols and amino acids ([NCCIH](https://www.nccih.nih.gov/health/tea)), among them L-theanine ([systematic review](https://pmc.ncbi.nlm.nih.gov/articles/PMC12422004/)). Caffeine is a stimulant. It can increase alertness, but too much can cause jitters, anxiety, insomnia, nausea, headache, increased heart rate, or palpitations.\n\nThe FDA cites 400 milligrams per day for most adults as an amount not generally associated with negative effects, while stressing that sensitivity and elimination vary with body, medication, and health conditions ([FDA](https://www.fda.gov/consumers/consumer-updates/spilling-beans-how-much-caffeine-too-much)). That is a population-level reference, not a personal target and not permission to push until symptoms appear.\n\nPregnancy, breastfeeding, certain conditions, and some medications require individualized guidance. Children and teens need different limits. A clinician is the right source for personal medical advice."
       },
       {
         "heading": "Why the cup is hard to calculate",
@@ -800,3 +804,28 @@ export const blogs = [
     ]
   }
 ] satisfies BlogPost[];
+
+export const approvedBlogIds = ["B01", "B02", "B03", "B04", "B05"] as const;
+const approvedBlogIdSet = new Set<string>(approvedBlogIds);
+
+function alaskaDateString(date: Date) {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Anchorage",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const value = (type: Intl.DateTimeFormatPartTypes) =>
+    parts.find((part) => part.type === type)?.value ?? "";
+
+  return `${value("year")}-${value("month")}-${value("day")}`;
+}
+
+export function publishedBlogs(asOf = alaskaDateString(new Date())) {
+  return blogs.filter(
+    (post) =>
+      approvedBlogIdSet.has(post.id) &&
+      post.date <= asOf &&
+      !post.publicationGate,
+  );
+}

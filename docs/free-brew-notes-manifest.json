@@ -1,0 +1,35 @@
+{
+  "status": "LOCAL PROOF - NOT PUBLISHED",
+  "offer": "Existing free brew notes",
+  "files": [
+    {
+      "filename": "being-tea-brew-notes-a4.pdf",
+      "bytes": 3047,
+      "sha256": "35b13a07a5560d0c210edb609a7a1e3ba9c88bacf50683ceb2c45262ad1b27d0",
+      "pages": 1,
+      "page_size_points": [
+        595.28,
+        841.89
+      ],
+      "bottom_content_y": 187.89
+    },
+    {
+      "filename": "being-tea-brew-notes-letter.pdf",
+      "bytes": 2994,
+      "sha256": "3e7da3038add0f4baf547078fa1f8d2e46cbc0a0b862120df4df7094706c9b8a",
+      "pages": 1,
+      "page_size_points": [
+        612.0,
+        792.0
+      ],
+      "bottom_content_y": 138.0
+    }
+  ],
+  "verification": {
+    "single_page": true,
+    "required_text": true,
+    "encrypted": false,
+    "visual_review": "passed - both final Poppler renders inspected; no overlap or clipping",
+    "physical_print": "unrun"
+  }
+}

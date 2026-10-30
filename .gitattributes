@@ -1,4 +1,5 @@
 # Keep owner-only editorial planning out of public source archives.
+*.pdf binary
 app/studio export-ignore
 app/content/social.ts export-ignore
 public/images/social export-ignore
