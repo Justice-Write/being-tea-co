@@ -34,11 +34,13 @@ production signing, store submission, or publication of private material.
   active worker; and an independent 35-route sweep returned all routes at HTTP
   200 with `noindex, nofollow`, zero private/persona marker hits, and a
   disallow-all robots file. The packaged source archive is
-  `Being-Tea-Co-Sites-PWA-Fixed-2026-10-30.tar.gz`, SHA-256
-  `53123e04e4cf7f4699715d4bda4ac0bb8b2241254e05206567592e245663dc51`.
-  The earlier archive was relabeled
-  `SUPERSEDED-Being-Tea-Co-Sites-PWA-Pre-PR10-2026-10-30.tar.gz`; it is
-  preserved only as superseded evidence and must not be deployed.
+  `Being-Tea-Co-Sites-PWA-Runtime-2026-10-30.tar.gz`, SHA-256
+  `ad2224d02ea914e1160f80a83c62bb0fa3a7b1017bf910e4c07b4782f0bbd1d9`.
+  It contains 213 tracked runtime-source members, the exact relative manifest
+  link, manifest/icons, network-first worker, and offline page. It excludes
+  operational handoff documents and obvious personal, credential, backup, and
+  recovery paths. Any package prefixed `SUPERSEDED-` is evidence only and must
+  not be deployed.
 
 Cloudflare is the authoritative PWA-install origin. Its served PWA text assets
 match the release after line-ending normalization. OpenAI Sites preserves the
@@ -111,6 +113,12 @@ replace WordPress without route/content/newsletter/redirect/rollback review.
 Consumer packages may contain reviewed code, compiled runtime assets, approved
 tea guidance, ordinary brand art/icons, blank Brew Notes, release notes, and
 integrity receipts.
+
+The Sites archive is a development/deployment source package rather than a
+consumer data directory. It includes the public repository's withheld B06-B12
+draft source and images, although their routes remain gated and return 404.
+That material is not personal data, but source presence is not editorial
+approval and does not authorize publication.
 
 They must not contain founder identity references, source photographs, real
 tasting journals or sessions, exported notes, device-backup archives,

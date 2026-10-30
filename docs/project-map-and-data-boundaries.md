@@ -33,6 +33,7 @@ cross-project data import is required to run the tea apps.
 | Founder identity reference, personal source photographs, private social studio/drafts | No | Remain private; never put in installer, public branch or release archive |
 | Keystores, tokens, environment files, account recovery material | No consumer runtime need | Keep outside public Git/releases; preserve signing identity for updates |
 | Source history, task conversations, recovery bundles, backups, tests and development dependencies | No | Development/recovery only; not a consumer install directory |
+| Sites runtime-source archive | Deployment input, not consumer data | Include tracked build/runtime source only; exclude operational handoffs, secrets, personal data, backups and recovery material; never use a package labeled `SUPERSEDED-` |
 
 The companion enables Android OS backup. Device settings can therefore allow journal/preferences backup or transfer even though the app has no Being Tea server sync. Preserve package ID/signature and update in place; do not uninstall to bypass a signing mismatch.
 
