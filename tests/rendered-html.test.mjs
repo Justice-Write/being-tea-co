@@ -126,7 +126,10 @@ test("preview PWA is installable without caching pages or personal data", async 
     "utf8",
   );
 
-  assert.match(home, /manifest\.webmanifest/);
+  const manifestLink =
+    home.match(/<link\b[^>]*\brel="manifest"[^>]*>/i)?.[0] ?? "";
+  assert.match(manifestLink, /href="\/manifest\.webmanifest"/);
+  assert.doesNotMatch(manifestLink, /https?:\/\//i);
   assert.equal(webManifest.name, "Being Tea Co. Preview");
   assert.equal(webManifest.id, "/");
   assert.equal(webManifest.start_url, "/");
