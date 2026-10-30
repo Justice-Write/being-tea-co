@@ -69,16 +69,27 @@ function AppReady({ store }: { store: BrewStore }) {
     };
     document.addEventListener("visibilitychange", visibility);
     window.addEventListener("focus", recover);
+    let disposed = false;
     let appHandle: { remove: () => void } | undefined;
     let backHandle: { remove: () => void } | undefined;
+    const release = (handle?: { remove: () => void }) => {
+      try {
+        void Promise.resolve(handle?.remove()).catch(() => undefined);
+      } catch {
+        // Native listener removal remains best effort on unsupported runtimes.
+      }
+    };
     void CapApp.addListener("appStateChange", ({ isActive }) => {
+      if (disposed) return;
       if (isActive) recover();
     }).then((handle) => {
-      appHandle = handle;
+      if (disposed) release(handle);
+      else appHandle = handle;
     }).catch(() => {
       // Web preview has no native app plugin.
     });
     void CapApp.addListener("backButton", () => {
+      if (disposed) return;
       if (editingEntry) {
         setEditingEntry(null);
         return;
@@ -89,13 +100,15 @@ function AppReady({ store }: { store: BrewStore }) {
       }
       void CapApp.minimizeApp();
     }).then((handle) => {
-      backHandle = handle;
+      if (disposed) release(handle);
+      else backHandle = handle;
     }).catch(() => undefined);
     return () => {
+      disposed = true;
       document.removeEventListener("visibilitychange", visibility);
       window.removeEventListener("focus", recover);
-      appHandle?.remove();
-      backHandle?.remove();
+      release(appHandle);
+      release(backHandle);
     };
   }, [store, tab, editingEntry]);
 
