@@ -45,6 +45,7 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+/tmp/
 
 # Owner-only editorial material is never committed to the public repository.
 /app/studio/
