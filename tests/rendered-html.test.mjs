@@ -235,11 +235,13 @@ test("trust pages use five distinct page images", async () => {
   );
 });
 
-test("companion privacy notice states local-only storage and notice limits", async () => {
+test("companion privacy distinguishes app storage, OS backups and notice limits", async () => {
   const html = await htmlFor("/companion/privacy");
 
   assert.match(html, /no Being Tea Co\. account/);
   assert.match(html, /Nothing is uploaded to Being Tea Co\. servers/);
+  assert.match(html, /Android device backup is enabled/);
+  assert.match(html, /separate copies; remove them separately/);
   assert.match(html, /not a guaranteed alarm/);
   assert.match(html, /not directed to children under 13/);
   assert.match(html, /mailto:beingteaco@gmail\.com/);
