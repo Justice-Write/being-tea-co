@@ -34,9 +34,14 @@ None.
 | Being Tea companion | `codex/mac-handoff-20260923` | Local-first Android/iOS source for sessions, repeat infusions, timer, journal, export/import, and local notices |
 | Steep Timer | `https://github.com/Justice-Write/Steep-Timer` | Separate installable educational PWA |
 | Free Brew Notes | `public/downloads/` | Free brand-only HTML and PDF observation sheets |
+| Between Steeps | WordPress Projects page | Observation-pack concept in redesign; no paid offer is approved |
+| Historical Android test lab | Sibling `mobile-publishing-2026-09-20` workspace | Isolated test artifact; not the current companion package |
+| Legacy editorial snapshot | Separate owner-controlled private source | Development/history only; never a consumer runtime dependency |
 
 Historical persona systems and private social/editorial work are not runtime
-dependencies and are not part of the current public brand direction.
+dependencies and are not part of the current public brand direction. OpenAI
+Sites source copies, internal workspaces, source archives, and WordPress XML
+exports are deployment or recovery data, not additional products.
 
 ## 3. Current state
 
@@ -56,20 +61,21 @@ dependencies and are not part of the current public brand direction.
 
 ### Replacement website
 
-- GitHub `main` contains the sanitized brand-only candidate. Launch merge
-  `dab5f299` has the same source tree as reviewed head `339d19a`; audit PR #4
-  and dependency-hardening PR #5 closed the dependency findings; PR #6
-  finalized the public handoff; and PWA PR #7 brought `main` to
-  `8b57a0b43491eb7f836f1ac76b38faa80b5c9092`.
+- GitHub `main` contains the sanitized brand-only candidate. PR #7 added the
+  preview PWA; PRs #8-#9 finalized its public-safe receipt and host boundary;
+  and PR #10 corrected manifest discovery and brought `main` to
+  `e5d699d8aa19c05a5568f12d4b4f95b1c8a2745e`.
 - Two public, deliberately noindex previews are live:
   `https://being-tea-co-preview.christiancodyak.workers.dev` and
   `https://being-tea-co.chriscodyak.chatgpt.site`.
-- Cloudflare Worker version `e43ae19c-92c6-4943-b23c-5525dfe25592` and OpenAI
-  Sites version 10, source `9650fcd2542fd36aa21cd2060bb926211f6d06d0`,
-  deployment `appgdep_6ae4642bf10081919deb7780817596aa`, were independently
-  checked on 2026-10-30. Both hosts passed manifest, service-worker,
-  offline-page, icon, Brew Notes PDF-integrity, brand-only, noindex, and
-  35-route checks.
+- Cloudflare Worker version `56ae09fc-81d6-4642-bc02-e9f4dc1dddd4` and OpenAI
+  Sites version 11, source `6f6063b0c503660bf9d34698b0b9b83b0680cac9`,
+  deployment `appgdep_6ae46736f4f48191a1c3c416642ef5b5`, carry the PR #10
+  manifest fix. Fresh live verification passed manifest discovery,
+  service-worker, offline-page, icon, Brew Notes PDF-integrity, brand-only,
+  noindex, and private-route checks on both hosts. An independent sweep then
+  returned HTTP 200, `noindex, nofollow`, and zero private/persona marker hits
+  for all 35 sitemap routes on each host; both robots files disallow all.
 - Use Cloudflare as the authoritative install origin. OpenAI Sites preserves
   the manifest and worker but injects its hosting challenge script into
   `offline.html`; the fallback still works and contains no personal data.
@@ -77,10 +83,12 @@ dependencies and are not part of the current public brand direction.
   cookies, account information, and personal data are never added to its
   cache. Only public static assets and the honest brand-only offline fallback
   are cacheable.
-- Browser installability is verified on both preview hosts. Windows and phone
-  installed-app status plus physical offline acceptance remain incomplete.
-  Neither Being Tea Co. Preview nor Steep Timer is installed on Windows; the
-  final Edge/Windows install action requires action-time owner confirmation.
+- Fresh Chromium checks return zero installability errors with one active
+  service worker on both corrected preview hosts. The earlier Edge prompt was
+  a generic site-wrapper fallback and was not valid PWA-installability
+  evidence. Neither Being Tea Co. Preview nor Steep Timer is installed on
+  Windows; installation and physical offline acceptance remain separate and
+  require action-time owner confirmation.
 - The site has nine tea families, nine brew methods, trust pages, free Brew
   Notes, and twelve journal drafts.
 - B01-B05 are the only approved candidate articles. B06-B12 remain withheld;
@@ -88,6 +96,10 @@ dependencies and are not part of the current public brand direction.
   review. Passed dates do not constitute approval.
 - Preview mode is `noindex, nofollow`. Public release mode requires the exact
   approved HTTPS origin and release environment values described in README.
+- Deploy only `Being-Tea-Co-Sites-PWA-Fixed-2026-10-30.tar.gz` when an archive
+  is required. The pre-fix archive is visibly labeled
+  `SUPERSEDED-Being-Tea-Co-Sites-PWA-Pre-PR10-2026-10-30.tar.gz` and is
+  evidence only.
 - The current direction is Being Tea Co. brand-only. Public routes and
   downloads must not present a fictional host or persona-network identity.
 - See `docs/release-and-audit-receipt-2026-10-30.md` for exact deployment,
@@ -203,15 +215,20 @@ npm --prefix mobile run android:apk
 
 ## 8. Work log
 
-- 2026-10-30 — PR #7 made the separate review site an installable noindex PWA
-  and brought `main` to `8b57a0b43491eb7f836f1ac76b38faa80b5c9092`.
-  Build, 15/15 route/content/PWA tests, typecheck, lint, audits, and both live
-  PWA verifiers passed. Current receipts are Cloudflare worker
-  `e43ae19c-92c6-4943-b23c-5525dfe25592` and OpenAI Sites version 10, source
-  `9650fcd2542fd36aa21cd2060bb926211f6d06d0`, deployment
-  `appgdep_6ae4642bf10081919deb7780817596aa`. Windows/phone installation and
-  physical offline acceptance remain pending; the Windows install requires
-  action-time confirmation.
+- 2026-10-30 — Fresh Chrome invalidated the initial installability claim: the
+  rendered page linked its manifest to `preview.beingteaco.invalid`, while the
+  first verifier only fetched a hardcoded local path. PR #10 changed discovery
+  to a same-origin relative link and strengthened rendered and live checks.
+  Corrected Cloudflare worker `56ae09fc-81d6-4642-bc02-e9f4dc1dddd4` and
+  OpenAI Sites version 11/source `6f6063b0c503660bf9d34698b0b9b83b0680cac9`/
+  deployment `appgdep_6ae46736f4f48191a1c3c416642ef5b5` passed fresh live and
+  Chromium checks with zero installability errors. No desktop installation
+  occurred.
+- 2026-10-30 — PR #7 added the separate review PWA and initially passed the
+  build, 15/15 route/content/PWA tests, typecheck, lint, audits, and the first
+  live verifier. That verifier did not follow the rendered manifest link, so
+  its installability conclusion and the generic Edge wrapper prompt were later
+  superseded by the PR #10 correction above.
 - 2026-10-30 — Reconciled the associated chats, products, repositories,
   deployments, packages, installations, and personal-data boundaries. PR #4
   added the public-safe audit/handoff and initial production dependency pins;

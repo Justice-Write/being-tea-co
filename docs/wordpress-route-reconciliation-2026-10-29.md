@@ -90,6 +90,36 @@ Projects page 1022 was updated on 2026-10-29: its single persona-framed group wa
 | 19 | Video Reviews | /video-reviews/ | WordPress-only: preserve; no replacement route verified |
 | 1 | About | /about/ | Related candidate route exists; exact content parity NOT verified |
 
+## Replacement cutover gap matrix
+
+This matrix advances planning only. It does not authorize a DNS, theme,
+newsletter, commerce, redirect, or production-host change.
+
+The corrected replacement sitemap has 35 routes: 12 static pages, nine tea
+families, nine brew methods, and five approved journal articles. Comparing
+normalized paths with the 81-page WordPress inventory gives 29 exact path
+overlaps, six candidate-only paths (`/learn` plus five `/journal/...` routes),
+and 52 WordPress-only page paths. Exact path overlap is not content parity.
+WordPress also has 14 published post URLs outside the page inventory.
+
+| Area | Current evidence | Gap before any replacement | Required acceptance evidence |
+|---|---|---|---|
+| Page routes | 81 WordPress pages; 35 preview sitemap routes; 29 exact path overlaps | 52 WordPress-only page paths need preserve, replace, redirect, or intentionally retire decisions | Signed route disposition with source URL, destination URL, HTTP status, content owner, and rollback target |
+| Published posts | 14 WordPress posts inventoried below | Dated WordPress post URLs do not match preview `/journal/...` paths; semantic matches and revisions are not mapped | Per-post content comparison, canonical choice, redirect map, media/source check, and editorial approval |
+| Botanical and foraging library | WordPress contains the safety, plant, seasonal, kitchen, and ethics routes listed above | No replacement equivalents exist; warnings, citations, and identification limits would be lost | Preserve WordPress routes or complete specialist-reviewed migrations with citation and safety-language parity |
+| Start and learning paths | WordPress has `/start-here/`; preview has `/learn` | Navigation intent and copy are not reconciled | Approved information architecture and redirect/canonical decision |
+| Companion | WordPress has `/companion/` and `/companion/privacy/`; preview has only the privacy route | Companion status/download landing page would be lost | Preserve or build the landing page; verify package/version, privacy, backup, and support disclosures |
+| Projects, Brew Notes, and Between Steeps | WordPress `/shop/` contains redesign material; preview `/shop` offers the free worksheet | The two pages have different jobs; no paid offer, price, refund, or fulfillment lifecycle is approved | Owner-approved page purpose and copy; free-download integrity; provider lifecycle proof before any paid claim |
+| Primary navigation and footer | Not fully inventoried in the route-only API pass | Menu order, labels, external links, newsletter entry points, and footer legal links may change or disappear | Captured current menus plus desktop/mobile comparison against an approved target menu |
+| Newsletter, forms, and contact | WordPress production has newsletter/contact behavior; preview is static | Submission endpoint, consent copy, confirmation, failure, unsubscribe, abuse handling, and data retention are unverified | End-to-end test receipts using a designated test address, privacy review, and rollback/failure behavior |
+| Media and image credits | WordPress reports 142 media items and has `/image-credits/`; no asset-by-route rights map exists | Candidate cannot prove parity, provenance, alt text, crop quality, or preservation of credited media | Media inventory with source page, rights/provenance, alt text, target asset, checksum, and credit disposition |
+| Titles, descriptions, canonicals, social cards, and schema | Preview metadata tests pass for its own routes | Production-versus-preview metadata parity and dated-post canonical decisions are not mapped | Crawl export from both systems plus reviewed diff and live post-deploy readback |
+| Redirects and HTTP behavior | No production redirect table is approved | Old page/post/media URLs may break or silently land on unrelated content | Tested redirect file with exact status codes, query handling, trailing-slash behavior, and zero loops/chains |
+| Search and indexing | WordPress is indexable; both preview hosts are deliberately `noindex, nofollow` and disallow crawling | Production release environment, canonical host, sitemap, robots, and search-console handoff are not approved | Exact-host release build, preflight crawl, post-deploy robots/sitemap/canonical checks, and indexing-owner signoff |
+| Analytics, cookies, and personal data | WordPress account/subscriber/contact/comment/analytics data stays in WordPress; static packages exclude it | No migration, retention, deletion, cookie, or measurement plan exists | Data-flow inventory, owner-approved retention/export/deletion plan, privacy text, and consent validation where required |
+| Rollback | WordPress remains the working production system | No timed rollback procedure or restore verification exists | Backup/export receipt, DNS/hosting reversal steps, named owner, recovery-time target, and tested health-check checklist |
+| Desktop and phone installability | Corrected preview hosts pass manifest/service-worker/Chromium checks | Windows/phone installation and physical offline acceptance remain unperformed | Action-time owner confirmation, installed-app readback, offline launch/navigation checks, update/uninstall behavior, and separate personal-data confirmation |
+
 ## Next acceptance gate
 
 The published-post API additionally returned all 14 posts (one page). WordPress already publishes the oolong, green-tea, Pu-erh and storage articles corresponding to candidate B06–B09. Candidate approval gates remain unchanged: the revised versions still need their own explicit approval. Old handoff claims that these articles are simply unpublished everywhere are inaccurate.
